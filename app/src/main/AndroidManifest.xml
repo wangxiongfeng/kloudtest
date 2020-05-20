@@ -1,0 +1,1168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.kloudsync.techexcel5"
+    android:versionCode="1"
+    android:versionName="1.0">
+
+    <uses-sdk android:targetSdkVersion="22" />
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 获取机型信息权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"></uses-permission>
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+
+    <!-- 查看 Wi-Fi 状态 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 查看网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 录音 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 控制振动器 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 防止设备休眠 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_LOGS" /> <!-- 获取logcat日志 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 拨打电话权限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <!-- 发送消息 -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <!-- 阅读消息 -->
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <!-- 写入消息 -->
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <!-- 接收消息 -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+
+    <application
+
+        android:name="com.kloudsync.techexcel5.app.App"
+        android:allowBackup="true"
+        android:icon="@drawable/app_icon"
+        android:label="@string/app_name"
+        android:resizeableActivity="false"
+        android:screenOrientation="portrait"
+        android:theme="@style/ThemeActivity"
+        tools:replace="android:icon, android:theme">
+
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.4" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.start.StartUbao"
+            android:label="@string/app_name"
+            android:priority="1"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.kloudsync.techexcel5.start.FirstActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.start.LoginActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="sensor"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="com.kloudsync.techexcel5.start.StartKloudActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="com.kloudsync.techexcel5.start.JoinMeetingActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="com.kloudsync.techexcel5.start.ForgetPasswordActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="com.kloudsync.techexcel5.ui.MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
+            android:label="@string/app_name"
+            android:theme="@style/ThemeActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.kloudsync.techexcel5"
+                    android:pathPrefix="/conversationlist"
+                    android:scheme="rong" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!--
+                <data android:scheme="file" />
+                <data android:mimeType="image/*" />
+                <data android:mimeType="application/pdf" />
+                <data android:mimeType="application/zip" />
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.presentationml.presentation" />
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+                <data android:mimeType="application/vnd.ms-powerpoint" />
+                <data android:host="*" />
+                <data android:pathPattern=".*"
+                -->
+                />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.kloudsync.techexcel5.ui.MainActivityV3"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/ThemeActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.kloudsync.techexcel5"
+                    android:pathPrefix="/conversationlist"
+                    android:scheme="rong" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!--
+                <data android:scheme="file" />
+                <data android:mimeType="image/*" />
+                <data android:mimeType="application/pdf" />
+                <data android:mimeType="application/zip" />
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.presentationml.presentation" />
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+                <data android:mimeType="application/vnd.ms-powerpoint" />
+                <data android:host="*" />
+                <data android:pathPattern=".*"
+                -->
+                />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.kloudsync.techexcel5.ui.WebResponseActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:launchMode="singleTop"
+            >
+
+            <intent-filter>
+                <!--action.VIEW和category.DEFAULT必须设置-->
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <!--如果需要浏览器支持打开，则category.BROWSABLE-->
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <!--schema的协议类型：随便设置，只要按照统一规则，前后端一致就行-->
+                <data
+                    android:scheme="ks"
+                    android:host="kloudsync"
+                    android:port="8888"
+                    android:path="/webnote"
+                    />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.kloudsync.techexcel5.ui.ReceiveWeChatDataActivity"
+            android:label="@string/app_name"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Transparent">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="content" />
+                <data android:mimeType="image/*" />
+                <data android:mimeType="application/pdf" />
+                <data android:mimeType="application/zip" />
+                <data android:mimeType="application/msword" />
+                <data android:mimeType="text/plain" />
+                <data android:mimeType="application/vnd.ms-excel application/x-excel" />
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+                <data android:mimeType="application/vnd.ms-powerpoint" />
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.presentationml.presentation" />
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.presentationml.presentation" />
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+                <data android:mimeType="application/vnd.ms-powerpoint" />
+                <data android:mimeType="audio/x-wav" />
+                <data android:mimeType="audio/x-mpeg" />
+                <data android:host="*" />
+                <data android:pathPattern=".*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="file" />
+                <data android:mimeType="image/*" />
+                <data android:mimeType="application/pdf" />
+                <data android:mimeType="application/zip" />
+                <data android:mimeType="application/msword" />
+                <data android:mimeType="text/plain" />
+                <data android:mimeType="application/vnd.ms-excel application/x-excel" />
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+                <data android:mimeType="application/vnd.ms-powerpoint" />
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.presentationml.presentation" />
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.presentationml.presentation" />
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+                <data android:mimeType="application/vnd.ms-powerpoint" />
+                <data android:mimeType="audio/x-wav" />
+                <data android:mimeType="audio/x-mpeg" />
+                <data android:host="*" />
+                <data android:pathPattern=".*" />
+            </intent-filter>
+        </activity>
+
+        <!-- <activity -->
+        <!-- android:name="MainActivity" -->
+        <!-- android:label="@string/app_name" -->
+        <!-- android:launchMode="singleInstance" -->
+        <!-- android:screenOrientation="portrait" -->
+        <!-- android:windowSoftInputMode="stateHidden|adjustPan"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.VIEW" /> -->
+
+
+        <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+
+
+        <!-- <data -->
+        <!-- android:host="com.ubao.techexcel" -->
+        <!-- android:pathPrefix="/conversationlist" -->
+        <!-- android:scheme="rong" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+
+        <activity
+            android:name="com.kloudsync.techexcel5.contact.ContactMap"
+            android:label="@string/ContactMap"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.contact.UserDetail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.contact.MemberDetail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.dialog.CommonUsed"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.dialog.SendKnowledge"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.dialog.KnowledgeDetail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.dialog.ShowKnowledgeDetail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.dialog.AddGroupActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="com.kloudsync.techexcel5.dialog.AddGroupActivity2"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="com.kloudsync.techexcel5.contact.AddUser"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="com.kloudsync.techexcel5.dialog.ChatDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="com.kloudsync.techexcel5.dialog.ChangeGroupNameActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="com.kloudsync.techexcel5.contact.SelectUBMan"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.contact.ChangeRemarkActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="com.kloudsync.techexcel5.start.ChangeCountryCode"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="com.ub.service.activity.SelectCourseActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="com.ub.service.activity.NewMeetingActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="com.kloudsync.techexcel5.personal.PersonalCollectionActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+        <activity
+            android:name="com.kloudsync.techexcel5.personal.MyNoteActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.personal.LanguageActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.dialog.SaveFavoritesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.contact.PurchasedCoursesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.start.PerfectData2Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.personal.MyCourseTemplateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.personal.SchoolProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.personal.TeacherProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.personal.MyAccountActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ThemeActivity3" />
+
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.contact.MyFriendsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:name="com.mining.app.zxing.MipcaActivityCapture"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <activity
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:launchMode="singleTop"
+            android:name="com.mining.app.zxing.BindTvCapture"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.docment.InviteNewActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.docment.InviteNew2Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.docment.InviteNew3Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.ui.WelcomeAndCreateActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.docment.SearchContactActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.personal.CreateOrganizationActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.personal.CreateOrganizationActivityV2"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.personal.CreateOrganizationInviteActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.docment.RenameActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.pc.ui.AboutActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.personal.AboutActivity2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.personal.DrawerLayoutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.filepicker.FilePickerActivity"
+            android:screenOrientation="sensor" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.personal.AboutWebActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.personal.AccountSettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.personal.AccountSettingAdminUserActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.personal.SyncRoomNameActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.personal.AddLinkedSubSystemActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.personal.AccountSettingContactActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.personal.HelpCenterActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.docment.EditTeamActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.docment.EditSpaceActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.linshi.LinshiActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.linshi.ViewAllDocumentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.ui.InviteFromPhoneActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.ui.InviteFromSpaceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.dialog.plugin.SingleCallActivity2"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenVideoTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <action android:name="io.rong.intent.action.voip.SINGLEVIDEO2" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="io.rong.intent.action.voip.SINGLEAUDIO2" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <service android:name="com.kloudsync.techexcel5.service.UploadService" />
+        <service android:name="com.ub.service.activity.FloatingService" />
+        <service android:name="com.ub.service.activity.FloatingService2" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.dialog.ConversationActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.kloudsync.techexcel5"
+                    android:pathPrefix="/conversation/"
+                    android:scheme="rong" />
+            </intent-filter>
+        </activity>
+
+        <!--
+       <activity
+           android:name="SubConversationListActivtiy"
+           android:screenOrientation="portrait"
+           android:windowSoftInputMode="stateHidden|adjustResize">
+
+           <intent-filter>
+               <action android:name="android.intent.action.VIEW" />
+
+               <category android:name="android.intent.category.DEFAULT" />
+
+               <data
+                   android:host="com.ubao.techexcel"
+                   android:pathPrefix="/subconversationlist"
+                   android:scheme="rong" />
+           </intent-filter>
+       </activity>
+        -->
+
+        <activity
+            android:name="com.kloudsync.techexcel5.dialog.SubConversationListDynamicActivtiy"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.kloudsync.techexcel5"
+                    android:pathPrefix="/subconversationlist"
+                    android:scheme="rong" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="io.rong.imlib.ipc.RongService"
+            android:process=":ipc" />
+        <service android:name="io.rong.imlib.ReConnectService" />
+
+        <activity
+            android:name="io.rong.imkit.tools.RongWebviewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="io.rong.imkit.widget.provider.TakingPicturesActivity"
+            android:screenOrientation="portrait" />
+
+        <service
+            android:name="io.rong.push.PushService"
+            android:process="io.rong.push">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="io.rong.push" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="io.rong.push.PushReceiver"
+            android:process="io.rong.push">
+            <intent-filter>
+                <action android:name="io.rong.imlib.action.push.heartbeat" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="io.rong.imlib.HeartbeatReceiver"
+            android:process=":ipc" />
+
+
+        <receiver android:name="com.ub.service.activity.PhoneReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE"/>
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="com.ub.service.activity.NetWorkChangReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.kloudsync.techexcel5.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/rc_file_path" />
+        </provider>
+
+
+        <!-- 测试key -->
+        <!--
+              <meta-data
+             android:name="RONG_CLOUD_APP_KEY"
+             android:value="lmxuhwagx9eed" />
+        -->
+
+        <!-- 正式key -->
+        @override
+        <meta-data
+            android:name="RONG_CLOUD_APP_KEY"
+            android:value="z3v5yqkbvs770" />
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="S2vxq7OmuTCrh6Kfl7Yex4uR" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="com.baidu.location.service_v2.2" />
+            </intent-filter>
+        </service>
+
+        <!-- 正式 -->
+
+        <provider
+            android:name="com.pgyersdk.PgyerProvider"
+            android:exported="false"
+            android:authorities="${applicationId}.com.pgyer.provider" />
+        <meta-data
+            android:name="PGYER_APPID"
+            android:value="c3ae43cb28a2922fd1145252c3138ad4" />
+        <!-- 测试 -->
+        <!--
+            <meta-data
+            android:name="PGYER_APPID"
+            android:value="bf9d64b78ee78487894352bb0149c641" />
+        -->
+
+
+
+        <!-- umeng -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="568c7e58e0f55a1eba00025c" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Ubao_Member" />
+
+        <service
+            android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService"
+            android:enabled="true" />
+
+
+        <!-- 雄风 汪 -->
+
+        <activity
+            android:name="com.ub.service.activity.ServiceDetailActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.service.activity.ConcernActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.service.activity.SelectUserActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.friends.activity.AddFriendsActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.friends.activity.AddVerificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.friends.activity.FriendsDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.friends.activity.NewFriendsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.service.activity.MyOrderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.friends.activity.DeleteFriendsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.service.activity.SendServiceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.service.activity.MeetingSearchResultsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.service.activity.AddAuditorActivity"
+            android:screenOrientation="landscape" />
+
+        <activity
+            android:name="com.ub.service.activity.AddMeetingMemberActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape" />
+
+
+        <activity
+            android:name="com.ub.service.activity.AlertDialogActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ActivityDialogStyle" />
+        <activity
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:name="com.ub.service.activity.WatchCourseActivity2"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="landscape"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:name="com.ub.service.activity.WatchCourseActivity3"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
+            android:hardwareAccelerated="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:name="com.ub.service.activity.SyncRoomActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
+            android:hardwareAccelerated="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:name="com.ub.service.activity.SyncBookActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="landscape"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:name="com.kloudsync.techexcel5.ui.DocAndMeetingActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="sensor"
+            />
+
+        <activity
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:name="com.kloudsync.techexcel5.ui.LessionActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="sensor"
+            />
+
+
+        <activity
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:name="com.kloudsync.techexcel5.ui.NoteViewActivityV2"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="sensor"/>
+
+        <activity
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:name="com.kloudsync.techexcel5.ui.MeetingViewActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="landscape"
+            />
+
+        <activity
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:name="com.kloudsync.techexcel5.ui.NoteViewActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="landscape"
+            />
+
+        <service android:name="com.ub.service.activity.SocketService" />
+
+        <activity
+            android:name="com.ub.service.activity.SelectFile"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.service.activity.CourseListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.service.activity.NotifyActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.service.activity.MyKlassroomActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.service.activity.MyCourseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.service.activity.LectureListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.service.activity.FinishedCourseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.service.activity.MeetingShareActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.service.activity.MeetingPropertyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.service.activity.NewPublicLessonActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="com.ub.kloudsync.activity.TeamActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.ub.kloudsync.activity.CreateNewTeamActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="com.ub.kloudsync.activity.CreateNewTeamActivityV2"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.ub.kloudsync.activity.CreateNewSpaceActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.ub.kloudsync.activity.SwitchTeamActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.kloudsync.activity.SwitchSpaceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.kloudsync.activity.SpacePropertyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.kloudsync.activity.TeamPropertyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.kloudsync.activity.SpaceDocumentsActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.ub.kloudsync.activity.SpaceSyncRoomActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.kloudsync.activity.CreateNewSyncRoomActivity"
+            android:screenOrientation="portrait" />
+
+
+        <!-- 迪凯 余 -->
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.PublishedArticleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.IntegralActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.QualificationsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.EvaluationManagementActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.EffectiveActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.AccountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.ChangePasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.ChangeNameActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.ChangePhoneActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.ChangePhoneNumberActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- 俊瑞 张 -->
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.PersonalInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.ProfessionalFieldActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.UpLoadHeadActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.AreaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.SelfDescriptionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.AreaEditActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.PerfectDataActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.start.RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.start.RegisterActivityStepOne"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.EditUserInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.ShowMemberInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.ShowUserInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ub.service.activity.SelectLessonTypeActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.docment.MoveDocumentActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.ub.kloudsync.activity.SelectTeamActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.search.ui.TeamAndDocSearchActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.search.ui.TeamSearchActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.search.ui.ChatSearchActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.search.ui.ContactSearchActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.search.ui.ContactSearchAndAddActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+
+
+        <activity
+            android:name="com.kloudsync.techexcel5.search.ui.SpaceSearchActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="com.kloudsync.techexcel5.docment.AddDocumentActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.docment.AddSyncRoomActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.docment.FavoriteDocumentsActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.ui.InvitationsActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.school.SelectSchoolActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.school.SwitchOrganizationActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="com.kloudsync.techexcel5.ui.AcceptFriendRequestActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.search.ui.OrganizationSearchActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.ub.kloudsync.activity.CreateNewSpaceActivityV2"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.ui.InviteFromCompanyActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.search.ui.DocumentSearchActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.search.ui.FavoriteDocumentSearchActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:launchMode="singleTop"
+            android:name="com.kloudsync.techexcel5.search.HelpDocumentSearchActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name="com.pgyersdk.feedback.FeedbackActivity" />
+        <activity
+            android:name="com.kloudsync.techexcel5.ui.GuideActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:launchMode="singleTop" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.ui.DigitalPensActivity"
+            android:launchMode="singleTop" />
+
+        <activity
+            android:name="com.ub.service.activity.MeetingActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.kloudsync.techexcel5.personal.SyncTvActivity"
+            android:launchMode="singleTop" />
+
+        <service
+            android:name="com.kloudsync.techexcel5.service.BluetoothLEService"
+            android:enabled="true" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.pc.ui.ContactDetailActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.ui.EnterPairingActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.ui.CurrentPenStatusActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kloudsync.techexcel5.ui.PenSeetingActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.ui.SwitchPenActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.kloudsync.techexcel5.personal.CurrentNoteActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+
+
+
+        <!--
+ ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
+        <!--
+            <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        -->
+    </application>
+
+</manifest>

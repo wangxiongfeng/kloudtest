@@ -1,0 +1,199 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@color/white"
+        android:paddingRight="16dp">
+
+        <RelativeLayout
+            android:id="@+id/layout_back"
+            android:layout_width="42dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true">
+
+            <ImageView
+                android:layout_centerInParent="true"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/arrow_back2" />
+        </RelativeLayout>
+
+        <TextView
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:layout_marginRight="36dp"
+            android:layout_marginLeft="36dp"
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/service"
+            android:textColor="#333333"
+            android:textSize="15sp" />
+
+
+
+        <RelativeLayout
+            android:id="@+id/image_add"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp">
+            <ImageView
+                android:layout_centerInParent="true"
+                android:id="@+id/addService"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/top_add_doc" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true">
+
+            <ImageView
+                android:id="@+id/img_notice"
+                android:layout_width="17dp"
+                android:layout_height="19dp"
+                android:padding="10dp"
+                android:src="@drawable/home_page_notice_icon_unchecked" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/grey" />
+
+    <include layout="@layout/searchcontact" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/dp_9"
+        >
+
+        <TextView
+            android:textSize="@dimen/sp_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="18dp"
+            android:text="@string/current_project"
+            android:textColor="@color/brunette" />
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_marginLeft="18dp"
+        android:id="@+id/txt_project_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_28"
+        android:text=""
+        android:textColor="@color/colorFont33"
+        android:textSize="@dimen/sp_16"
+        />
+
+
+
+    <TextView
+            android:textSize="@dimen/sp_12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingLeft="18dp"
+            android:text="@string/current_project_folder"
+            android:textColor="@color/brunette" />
+    
+
+            <RelativeLayout
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/teamrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp_16"
+                android:paddingBottom="@dimen/dp_29">
+
+                <TextView
+                    android:textColor="@color/white"
+                    android:textSize="9dp"
+                    android:gravity="center"
+                    android:paddingTop="1dp"
+                    android:id="@+id/switch_dir"
+                    android:layout_width="22dp"
+                    android:layout_height="16dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="18dp"
+                    android:background="@drawable/icon_dir" />
+
+                <!--<ImageView
+                    android:id="@+id/icon_white_switch"
+                    android:src="@drawable/switch_gray"
+                    android:layout_marginLeft="12dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/switch_dir"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp" />-->
+
+
+                <TextView
+                    android:layout_marginRight="@dimen/dp_17"
+                    android:singleLine="true"
+                    android:textSize="@dimen/sp_16"
+                    android:layout_marginLeft="@dimen/dp_17"
+                    android:id="@+id/teamspacename"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/switch_dir"
+                    android:layout_toLeftOf="@+id/image_more_options"
+                    android:textColor="@color/brunette" />
+
+                <ImageView
+                    android:layout_marginRight="@dimen/dp_25"
+                    android:id="@+id/image_more_options"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/gray_option_more" />
+
+            </RelativeLayout>
+
+
+        <TextView
+            android:textSize="@dimen/sp_12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/dp_18"
+            android:text="@string/Current_doc"
+            android:textColor="@color/brunette" />
+
+
+
+
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycleview"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+
+</LinearLayout>

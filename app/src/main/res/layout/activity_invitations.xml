@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+
+
+    <RelativeLayout
+        android:paddingTop="20dp"
+        android:paddingBottom="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_marginBottom="10dp"
+            android:id="@+id/layout_bg_skip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:visibility="invisible"
+                android:id="@+id/txt_skip"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:background="@drawable/bg_skip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="跳过"
+                android:textColor="#ff3d78fb"
+                android:textSize="13sp"
+                />
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_below="@id/layout_bg_skip"
+            android:layout_marginLeft="23dp"
+            android:id="@+id/txt_welcome"
+            android:textSize="23sp"
+            android:layout_marginTop="20dp"
+            android:textColor="#3E3F42"
+            android:text="以下公司邀请您加入"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginLeft="23dp"
+            android:id="@+id/txt_promp_join"
+            android:textSize="13sp"
+            android:layout_marginTop="6dp"
+            android:textColor="#ff999999"
+            android:text="现在点击加入"
+            android:layout_below="@id/txt_welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="12dp"
+            android:id="@+id/list_invitation"
+            android:layout_below="@id/txt_promp_join"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/txt_next"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:text="下一步"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/bottom_blue_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,2208 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta id="viewport" name="viewport" content="width=device-width,height=device-height,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>PeerTime</title>
+    <link rel="stylesheet" href="style/iconfont.css" />
+    <link rel="stylesheet" href="style/static/iconfont.css" />
+    <link rel="stylesheet" href="style/whiteboard.css" />
+    <!--<link rel="stylesheet" href="//at.alicdn.com/t/font_585769_4hajxmvfu3.css">-->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/Common.js"></script>
+    <script type="text/javascript" src="js/whiteboard.min.js"></script>
+    <!--<script type="text/javascript" src="js/whiteboard.js"></script>-->
+    <script type="text/javascript" src="js/jquery.touch.js"></script>
+    <script type="text/javascript">
+        var whiteboard = new TXTools.default();
+        //var whiteboard = new WhiteBoardTool();
+        var ISPC = location.href.toLowerCase().indexOf("http") == 0 && location.href.toLowerCase().indexOf("android_asset")==-1;
+        var ISANDROID = location.href.toLowerCase().indexOf("android_asset") > 0;
+        var MAINTOUCH = null;
+        var ZOOM = 1;
+        var PDFCOUNT = 0;
+        var PDFURL = "";
+        var EVENTSTART = "touchstart", EVENTMOVE = "touchmove", EVENTEND = "touchend", EVENTCLICK = "click";
+        var PageNumber = 1;
+        var ToPageNumber = 1;
+        var IsRecord = false;
+        var PreZoom = 1;
+        var IsShowLog = false;
+        var NewPageList = [];
+        var IsToolBarShow = true;
+        var IsToolBarShowOnly = true;
+        var LastChangeTime = new Date();
+        var CurrentAttachmentID = 0;
+        var AfterSelectVideoCall = null;
+        var LastVideoTagID = "";
+        var IsPPT = false;
+        var CurrentScale = 1;
+        var CanScroll = true;
+        var IsInlineWihteBoardShow = false;
+        var PDFMAP = new JsMap();
+        var FLAG=true;
+        var IsShowPageInfo = false;
+       
+
+        function BodyOnload()
+        {
+            //var w = Math.max(screen.width, screen.height);
+            //var r = window.devicePixelRatio || 1;
+            //w = w * r;
+            ////console.log("availWidth:"+screen.availWidth);
+            ////console.log("availHeight:"+screen.availHeight);
+            //console.log("Real width:" + w);
+            //console.log("devicePixelRatio:" + window.devicePixelRatio);
+            
+
+            InitPage();
+            initializeControlWindow();
+            toolBarCheck();
+            window.onresize = function onresize()
+            {
+                CheckZoom();
+                toolBarCheck();
+            };
+           
+            if (location.href.toLowerCase().indexOf("http") == 0)
+            {
+                //ShowPDF('1.pdf', 1, "");
+                //SetSizeMode(1);
+                //ShowPDF("Test_<10>.jpg", 1,"",1);
+                ShowPDF("https://peertime.oss-cn-shanghai.aliyuncs.com/P49/Attachment/D57326/b1de65ca-20b7-4b0a-b868-1c802d70bbbd_<2>_4K.jpg", 1, "", 1,true);
+                //ShowPDF("https://peertime-test.oss-cn-shanghai.aliyuncs.com/P49/Attachment/D25954/f807cf51-ee6e-478e-bc50-331f8cca0f6e_<18>.jpg", 1, "", 1);
+                //ShowPDF('https://pt.techexcel.com/scripts/texcel/customerwise/TxSwDownload/e2f3020fe2f302dce2f302dce2f308a1/William%27s+demo+ppt.pdf', 1);
+                //ShowPPT("https://192.168.22.137:4433/ppt/data/", PageNumber);
+                Record();
+                //$("#div_btn_toobar").show();
+            }
+            else
+            {
+
+            }
+
+            MainTouch();
+            if (!ISPC)
+            {
+                AfterLoadPage();
+            }
+            $("#main").css({ "width": getViewWidth(), "height": getViewHeight() });
+            //$(document).bind(EVENTCLICK, Record_click);
+            
+            //alert(screen.width + "," + window.screen.height);
+            //setTimeout(function () {
+            //    PlayActionByTxt('{"type":21,"page":1,"CW":706,"CH":3941,"VW":716,"VH":494,"id":"4650f0f4-e71c-ead2-e5b8-b1d20a4aad80","d":"M124,136 L137,136 L150,136 L172,134 L189,134 L208,134 L225,138 L240,144 L256,155 L268,165 L278,176 L288,197 L292,213 L297,232 L305,256 L317,283 L336,317 L355,338 L379,357 L402,370 L426,376 L454,382 L481,382 L518,382 L537,382 L548,380 L551,380","w":"1","color":"#ff0000","save":1,"tar":"","time":61610}');
+            //}, 5000);
+
+
+            //setTimeout(function () {
+            //    PlayActionByTxt('{"type":38,"LinkID":123,"LinkProperty":{"X":0.2683315621679065,"Y":0.37898089171974525}}',0);
+            //}, 3000);
+            //setTimeout(function () {
+            //    whiteboard.TwinkleBookNote(123);
+            //}, 6000);
+            // setTimeout(function () {
+            //     ShowToolbar(false);
+            // },3000);
+            // setTimeout(function () {
+            //     ShowToolbar(true);
+            // },5000);
+             //setTimeout(function(){
+             //    FromApp("ShowDotPanData", { LinesData: { "PageToken": "xxx-xx-xx-xxxxx", "PaintData": [{ "address": "1536.671.59.6", "userID": 225016572, "event_type": 2, "force": 0, "point_x": 0, "point_y": 0, "timestamp": 1.57483738E+09, "penID": "TD-602-08GUR" }, { "address": "1536.671.59.6", "userID": 225016572, "event_type": 1, "force": 212, "point_x": 499, "point_y": 518, "timestamp": 1.57483738E+09, "penID": "TD-602-08GUR" }, { "address": "1536.671.59.6", "userID": 225016572, "event_type": 1, "force": 244, "point_x": 499, "point_y": 511, "timestamp": 1.57483738E+09, "penID": "TD-602-08GUR" }, { "address": "1536.671.59.6", "userID": 225016572, "event_type": 1, "force": 386, "point_x": 499, "point_y": 509, "timestamp": 1.57483738E+09, "penID": "TD-602-08GUR" }, { "address": "1536.671.59.6", "userID": 225016572, "event_type": 1, "force": 422, "point_x": 501, "point_y": 511, "timestamp": 1.57483738E+09, "penID": "TD-602-08GUR" }, { "address": "1536.671.59.6", "userID": 225016572, "event_type": 1, "force": 434, "point_x": 499, "point_y": 522, "timestamp": 1.57483738E+09, "penID": "TD-602-08GUR" }, { "address": "1536.671.59.6", "userID": 225016572, "event_type": 1, "force": 446, "point_x": 479, "point_y": 572, "timestamp": 1.57483738E+09, "penID": "TD-602-08GUR" }, { "address": "1536.671.59.6", "userID": 225016572, "event_type": 1, "force": 462, "point_x": 461, "point_y": 634, "timestamp": 1.57483738E+09, "penID": "TD-602-08GUR" }, { "address": "1536.671.59.6", "userID": 225016572, "event_type": 1, "force": 474, "point_x": 456, "point_y": 672, "timestamp": 1.57483738E+09, "penID": "TD-602-08GUR" }, { "address": "1536.671.59.6", "userID": 225016572, "event_type": 1, "force": 477, "point_x": 454, "point_y": 698, "timestamp": 1.57483738E+09, "penID": "TD-602-08GUR" }, { "address": "1536.671.59.6", "userID": 225016572, "event_type": 1, "force": 489, "point_x": 456, "point_y": 707, "timestamp": 1.57483738E+09, "penID": "TD-602-08GUR" }, { "address": "1536.671.59.6", "userID": 225016572, "event_type": 1, "force": 440, "point_x": 455, "point_y": 707, "timestamp": 1.57483738E+09, "penID": "TD-602-08GUR" }, { "address": "1536.671.59.6", "userID": 225016572, "event_type": 1, "force": 345, "point_x": 455, "point_y": 702, "timestamp": 1.57483738E+09, "penID": "TD-602-08GUR" }] },ShowInCenter:true });
+
+             //},2000);
+            
+        }
+        function InitPage()
+        {
+            //whiteboard.SetSizeMode(1);
+            var devicetype = ISANDROID ? 2 : 1;
+            devicetype = GetParamFormUrl(location.href, "devicetype", devicetype);
+            console.log("devicetype:" + devicetype);
+            whiteboard.SetDeviceType(devicetype);//0:web,1:ios,2:android, 3: touch tv 4:boox
+            //whiteboard.SetRecord(true);
+            whiteboard.SetCanEdit(true);
+            whiteboard.OnToolReset(function(res) {
+              console.log("OnToolReset:"+res);
+              //_activeButton("#liveActionCursor");
+                if (res == "") {
+                    if (!IsInlineWihteBoardShow) {
+                        CanScroll = true;
+                    }
+                    ResetTools($("#div_btn_pointer"));
+                }
+                CallApp("OnToolChange",{"ToolName":res});
+            });
+            whiteboard.OnReceviceData(function(res) {        
+              RecordHandle(res);
+              if(res.type!=34 && res.type!=35)
+              {
+                  //console.log("OnReceviceData:"+ JSON.stringify(res));
+                  //whiteboard.Play(res);
+              }
+            });
+            whiteboard.OnError(function (res) {
+                //{Code:11,Data:obj}
+                console.log("Error=>" + JSON.stringify(res));
+                NoticeAppError(res);
+                //console.log(res);
+            });
+            //whiteboard.Init($("#svg1"), $("#main"), $("#pageContainer1"), 1);
+
+            whiteboard.OnDownload(function(pagenumber,process){
+                console.log(PageNumber+":"+pagenumber+"->"+process);
+                if(PageNumber!=pagenumber)
+                {
+                    return;
+                }
+                if (process == 100)
+                {
+                    PrestrainPage(pagenumber);
+                }
+            });
+            whiteboard.OnPageChange(function(pagenumber,type){
+              //console.log("OnPageChange:"+pagenumber);
+                PageNumber = pagenumber;
+                ToPageNumber = pagenumber;
+                ShowPdfInfo();
+                CurrentScale = 1;
+                AfterChangePage(pagenumber,type);
+                ///PrestrainPage(pagenumber);
+                //updateToolbar();
+            });
+            whiteboard.OnSelectVideo(function(id, afterSelectVideo) {
+                VideoTagSelect(id);
+                AfterSelectVideoCall = afterSelectVideo;
+              //Context.$refs.syncplayer.selectVideoShow((d)=>{
+              //    afterSelectVideo(id,d);
+              //});
+      
+            });
+            whiteboard.OnVideoPlay(function(id){
+                console.log("OnVideoPlay:" + id);
+                VideoTagPlay(id);
+              //Context.playVideoTag(id);
+
+            });
+            whiteboard.OnBoardDisplayChange(function(isshow){
+                console.log("OnBoardDisplayChange:"+isshow);
+                IsInlineWihteBoardShow = isshow;
+                CanScroll = !isshow;
+                //Context.ChangeDrawTool4WhiteBoardDiplayChange(isshow);
+            });
+            whiteboard.OnSettingChange(function(set){
+                 UserSettingChange(set);
+             });
+
+            whiteboard.SetCallBack("BookNoteSelect",function(data){
+                CallApp("BookNoteSelect",data);
+            });
+            whiteboard.SetCallBack("BookNoteView",function(data){
+                CallApp("BookNoteView",data);
+            });
+            whiteboard.SetCallBack("BookNoteMove",function(data){
+                CallApp("BookNoteMove",data);
+            });
+            whiteboard.SetCallBack("BookNoteEdit",function(data){
+                CallApp("BookNoteEdit",data);
+            });
+            whiteboard.SetCallBack("BookNoteDelete",function(data){
+                CallApp("BookNoteDelete",data);
+            });
+            whiteboard.SetCallBack("OnLinkAreaClick",function(data){
+                CallApp("OnLinkAreaClick",data);
+            });
+
+        }
+        function initializeControlWindow() {
+        	$("#liveActionPen").click(function(e) {
+			    $("#penTip").toggle();
+			    ResetTools($("#liveActionPen"));
+			    if (sessionStorage.getItem("live_pentype") && sessionStorage.getItem("live_pentype") != 2) {
+	                whiteboard.SetDrawTool("ToolPen");
+	                CanScroll = false;
+	                //docview.ShowDocument("test url");
+	                ResetTools($("#div_btn_drawline"));
+	                iconChange("#div_btn_drawline");
+	                return false;
+			    }
+			    else{
+	                whiteboard.SetDrawTool("ToolBrush");
+	                CanScroll = false;
+	                ResetTools($("#div_btn_drawbrush"));
+	                iconChange("#div_btn_drawbrush");
+	                return false;
+			    }
+			});
+            $("#div_btn_pointer").click(function (e) {
+                ResetTools($("#div_btn_pointer"));
+                whiteboard.SetDrawTool("");
+                CanScroll = true;
+                iconChange("#div_btn_pointer")
+                return false;
+            });
+            $("#div_btn_drawline").click(function (e) {
+            	_cancelBubble(e);
+                _cancelDefault(e);
+//              if ($("#div_btn_drawline").hasClass("selected")) {
+//                  whiteboard.ShowSetting(true);
+//                  return;
+//              }
+                whiteboard.SetDrawTool("ToolPen");
+                CanScroll = false;
+                //docview.ShowDocument("test url");
+                ResetTools($("#div_btn_drawline"));
+                iconChange("#div_btn_drawline");
+                CloseToolsEx();
+                sessionStorage.setItem("live_pentype", 1);
+                whiteboard.ShowSetting(true);
+                return false;
+            });
+            $("#div_btn_drawbrush").click(function (e) {
+                // whiteboard.Play({"type":35,"poz":[915,228],"bd":0,"page":0,"VW":1574,"ST":0,"SL":0});
+                // return;
+                _cancelBubble(e);
+                _cancelDefault(e);
+//              if ($("#div_btn_drawbrush").hasClass("selected")) {
+//                  whiteboard.ShowSetting(true);
+//                  return;
+//              }                
+                whiteboard.SetDrawTool("ToolBrush");
+                CanScroll = false;
+                ResetTools($("#div_btn_drawbrush"));
+                iconChange("#div_btn_drawbrush");
+                CloseToolsEx();
+                sessionStorage.setItem("live_pentype", 2);
+                whiteboard.ShowSetting(true);
+                return false;
+            });
+            $("#div_btn_drawrect").click(function (e) {
+
+                if ($("#div_btn_drawrect").hasClass("selected")) {
+                    whiteboard.ShowSetting(true);
+                    return;
+                }                
+                whiteboard.SetDrawTool("ToolLine");
+                CanScroll = false;
+                ResetTools($("#div_btn_drawrect"));
+                iconChange("#div_btn_drawrect")
+                CloseToolsEx();
+                return false;
+            });
+            $("#div_btn_text").click(function (e) {
+                if(whiteboard.ShowSelectToolSetting("ToolText"))
+                {
+                    _cancelBubble(e);
+                    _cancelDefault(e);
+                    return false;
+                }
+                if ($("#div_btn_text").hasClass("selected")) {
+                    whiteboard.ShowSetting(true);
+                    return;
+                }
+                whiteboard.SetDrawTool("ToolText");
+                CanScroll = false;
+                ResetTools($("#div_btn_text"));
+                iconChange("#div_btn_text")
+                CloseToolsEx();
+                return false;
+            });
+            $("#div_btn_drawrectangle").click(function (e) {
+                ResetTools($("#div_btn_drawrectangle"));
+                    if($(".addText").css("display")=="none"){
+                        $(".addText").show()
+                        $(".video-choose").hide();
+                    }else{
+                        $(".addText").hide();
+                    }
+ 
+            });
+            $("#stickyNote").click(function(e){
+                if(whiteboard.ShowSelectToolSetting("ToolNote"))
+                {
+                    _cancelBubble(e);
+                    _cancelDefault(e);
+                    return false;
+                }
+                // if ($("#div_btn_drawrectangle").hasClass("selected")) {
+                //     whiteboard.ShowSetting(true);
+                //     return;
+                // }
+                whiteboard.SetDrawTool("ToolNote");
+                CanScroll = false;
+                ResetTools($("#div_btn_drawrectangle"));
+                iconChange("#stickyNote")
+                CloseToolsEx();
+                return false;
+            })
+            $("#myNote").click(function(e){
+                whiteboard.SetDrawTool("ToolBooksNote");
+                ResetTools($("#myNote"));
+                iconChange("#myNote")
+                CloseToolsEx();
+                return false;
+            })
+            $("#liveActionDraw").click(function (e) {
+                _activeButton("#liveActionDraw");
+                //DrawInlineBoard();
+                return false;
+            });
+            $("#div_btn_whiteboard").click(function (e) {
+                
+                whiteboard.SetDrawTool("ToolBoard");
+                CanScroll = false;
+                ResetTools($("#div_btn_whiteboard"));
+                iconChange("#div_btn_whiteboard")
+                CloseToolsEx();
+                return false;
+            });
+            $("#div_btn_video").click(function (e) {
+                // ResetTools($("#div_btn_video"));
+                //     if($(".video-choose").css('display')=='none'){
+                //         $(".video-choose").show();
+                //         $(".addText").hide();
+                //     }else{
+                //         $(".video-choose").hide();
+                //     }
+                CloseToolsEx();
+                whiteboard.SetDrawTool("ToolVideo");
+                CanScroll = false;
+                ResetTools($("#div_btn_video"));
+                iconChange("#addLocalVideo")
+                return false;                
+            });
+            $("#liveActionAddPage").click(function (e) {
+                _activeButton("#liveActionAddPage");
+                DrawAddPage();
+                return false;
+            });
+            $("#li_btn_clear").click(function (e) {
+                //Context.onMasterLessonStart({ lessonId:111});
+                //return false;
+                //_activeButton("#li_btn_clear");
+                //ClearPath();
+                whiteboard.SetDrawTool("ToolClear");
+                var icon = $("#div_btn_toobar").find("span");
+                icon.removeClass();
+                icon.addClass("icon icon-gongju1")
+                return false;
+            });
+            $("#li_btn_undo").click(function (e) {
+                //alert("todo!");
+                whiteboard.Undo();
+                return false;
+            });
+            $("#li_btn_redo").click(function (e) {
+                //alert("todo!");
+                whiteboard.Redo();
+                return false;
+            });           
+            $("#addSync").click(function(e){
+                CloseToolsEx();
+                whiteboard.SetDrawTool("ToolSync");
+                CanScroll = false;
+                ResetTools($("#div_btn_video"));
+                iconChange("#addSync")
+                return false;
+            })
+            $("#addLocalVideo").click(function(e){
+                CloseToolsEx();
+                whiteboard.SetDrawTool("ToolVideo");
+                CanScroll = false;
+                ResetTools($("#div_btn_video"));
+                iconChange("#addLocalVideo")
+                return false;
+            })
+            $("#addWebVideo").click(function(e){
+                CloseToolsEx();
+                whiteboard.SetDrawTool("ToolVideoLink");
+                CanScroll = false;
+                ResetTools($("#div_btn_video"));
+                iconChange("#addWebVideo")
+                return false;
+            })
+        }
+        function iconChange(id){
+           var icon = $("#div_btn_toobar").find(".icon");
+           icon.removeClass();
+            if(id=="#div_btn_pointer"){
+                icon.addClass("icon icon-gongju1")
+                return 
+            }
+           var _class=$(id).find('.icon').attr("class");
+           icon.addClass(_class)
+        }
+        function toolBarCheck(){
+            let _height=$(document).height();
+            let count=parseInt((_height-12)/11);
+            if(count<20){
+                count=20
+            }
+            if(count>46){
+                count=46
+            }
+            $('.navigatelist .tool').height(count)
+        }
+        function getNoteId(id){
+
+        }
+        function Record_view() {
+            whiteboard.TriggerViewChange();
+        }
+        function fnErrorTrap(sMsg, sUrl, sLine)
+        {
+            if (IsShowLog)
+            {
+                oErrorLog.innerHTML += "Error: " + sMsg + "<br>";
+                oErrorLog.innerHTML += "Line: " + sLine + "<br>";
+                //oErrorLog.innerHTML += "URL: " + sUrl + "<br>";
+            }
+            return false;
+        }
+        window.onerror = fnErrorTrap;
+        function MainTouch()
+        {
+            _attachEvent(gid("moveleft"), "touchmove", function (evt)
+            {
+                //ShowMsg("touchmove:" + window.innerWidth );
+                //window.innerWidth = window.outerWidth;
+                _cancelDefault(evt);
+                _cancelBubble(evt);
+            });
+            _attachEvent(gid("moveright"), "touchmove", function (evt)
+            {
+                //ShowMsg("touchmove:" + window.innerWidth );
+                //window.innerWidth = window.outerWidth;
+                _cancelDefault(evt);
+                _cancelBubble(evt);
+            });
+            _attachEvent(gid("div_btn_toobar"), "touchmove", function (evt)
+            {
+                //ShowMsg("touchmove:" + window.innerWidth );
+                //window.innerWidth = window.outerWidth;
+                _cancelDefault(evt);
+                _cancelBubble(evt);
+            });
+
+
+            var oldw = 0;
+            var oldh = 0;
+            var oldzoom = 1;
+            var oldST = 0;
+            var oldSL = 0;
+            var oldW = 0;
+            var oldH = 0;
+            var zoomTimer = null;
+            var oldInfo = null;
+            var isMove=false;
+            var touchLength = 0;
+            var currentSizeMode = 0;
+            //var lastZoomTime = new Date();
+            MAINTOUCH = $("#main").touch({
+               onEnd: function ()
+                {
+                    //console.log("on end");
+                    //Record_view();
+                    //$("#main").animate({ left: '0px' }, "fast");
+                    //Record_zoom();
+                    //Record_scroll();
+                },
+                onEndEx:function(evt){
+                    if(touchLength==2 && isMove==false)
+                    {
+                        ResetTools($("#div_btn_pointer"));
+                        whiteboard.SetDrawTool("");
+                        CanScroll = true;
+                        iconChange("#div_btn_pointer")
+                    }
+                    isMove=false;
+                    touchLength=0;
+                },
+                beforeZoom: function (midpoint,touchlength)
+                {
+                    //alert("beforeZoom");
+                    //ShowMsg("beforeZoom:" +midpoint);
+                    touchLength=touchlength;
+                    var container = GetPageContainer(PageNumber);
+                    oldw = container.width();
+                    oldh = container.height();
+                    //oldzoom = parseFloat(container.find(">canvas").css("zoom"));
+                    oldST = $("#main").scrollTop() | 0;
+                    oldSL = $("#main").scrollLeft() | 0;
+                    oldW = getContainerWidth();
+                    oldH = getContainerHeight();
+                    oldInfo = whiteboard.GetPageInfo();
+                    //console.log("before:" + oldInfo.length);
+                },
+                onZoom: function (zoom, midpoint)
+                {
+                    isMove=true;
+                    //ShowMsg("Zoom:" + zoom);
+                    var container = GetPageContainer(PageNumber);
+                    //var oldw = container.width();
+                    //var oldh = container.height();
+                    //var oldzoom = container.find(">canvas").css("zoom");
+                    var VW = getViewWidth();
+                    var VH = getViewHeight();
+                    var newW = oldw * zoom;
+                    if (newW > VW * 4)
+                    {
+                        newW = VW * 4;
+                        zoom = newW / oldw;
+                    }
+                    else if (newW < VW * 0.1)
+                    {
+                        newW = VW * 0.1;
+                        zoom = newW / oldw;
+                    }
+                    var newH = oldh * zoom;
+
+                    if (newW <= VW && newH <= VH) {
+                        if (newW / newH < VW / VH) {
+                            newH = VH;
+                            newW = newH * oldw / oldh;
+                            zoom = newH / oldh;
+                        }
+                        else {
+                            newW = VW;
+                            newH = newW * oldh / oldw;
+                            zoom = newW / oldw;
+                        }
+                        if (currentSizeMode != 1)
+                        {
+                            currentSizeMode = 1;
+                            console.log("SetSizeMode 1");
+                            whiteboard.SetSizeMode(1, false, true);
+                            return;
+                        }
+                    }
+                    else {
+                        if (currentSizeMode != 0) {
+                            currentSizeMode = 0;
+                            console.log("SetSizeMode 0");
+                            whiteboard.SetSizeMode(0, false, true);
+                            return;
+                        }
+                    }
+                    //var canvasW = Math.max(VW, newW);
+                    //var canvasH = Math.max(VH, newH);
+                    //container.find(">svg").width(canvasW).height(canvasH);
+
+                    //var info = GetPageInfo(PageNumber);
+                                        
+                    
+                    container.width(newW).height(newH).attr("CW", newW);
+                    $("#svg" + PageNumber).empty();
+                    $("#canvas" + PageNumber).width(newW);
+                    $("#pageContainer" + PageNumber).height($("#img_" + PageNumber).height());
+                    //$("#main").height($("#img_" + PageNumber).height());
+
+                    //container.find(">canvas").css("zoom", parseFloat(oldzoom) * zoom);
+
+                    var newSL = newW * (midpoint[0] + oldSL) / oldW - midpoint[0];
+                    var newST = newH * (midpoint[1] + oldST) / oldH - midpoint[1];
+                    $("#main").scrollLeft(Math.max(0, newSL));
+                    $("#main").scrollTop(Math.max(0, newST));
+
+                    if (zoomTimer)
+                    {
+                        clearTimeout(zoomTimer);
+                    }
+                    zoomTimer = setTimeout(function ()
+                    {
+                        //console.log("draw:"+oldInfo.length);
+                        ShowPageInfo(PageNumber, oldInfo);
+                        Record_view();
+                    }, 300);
+                }
+            });
+
+
+        }
+        function UnbindMainTouch()
+        {
+            return;
+            if (MAINTOUCH == null) return;
+            MAINTOUCH.unbindEvent(document.getElementById("main"), EVENTSTART, MAINTOUCH.ontouchstart);
+            MAINTOUCH.unbindEvent(document.getElementById("main"), EVENTEND, MAINTOUCH.ontouchend);
+            MAINTOUCH.unbindEvent(document.getElementById("main"), EVENTMOVE, MAINTOUCH.ontouchmove);
+            //var div = $(document.body).find(">div.ui-page");
+            //div.attr("left", div.scrollLeft()).attr("top", div.scrollTop());
+            //$(document.body).find(">div.ui-page").css({ "overflow":"hidden"});
+        }
+        function BodyChange()
+        {
+            //ShowMsg("BodyChange");
+            //var ow = $('#pageContainer' + PageNumber).width();
+            //var cw = $(document.body).width();
+            //ZOOM = cw / ow;
+            //$("#main").css({ zoom: ZOOM});
+            CheckZoom();
+        }
+        function BodyClick() {
+            CallApp("OnBodyClick", {});
+        }        
+        function ShowPdfInfo()
+        {
+            //console.log("ShowPdfInfo:" + PDFCOUNT);
+            if (PDFCOUNT > 0)
+            {
+                $("#pdfinfo").find(">span").html(GetShowNumber(PageNumber) + "/" + (PDFCOUNT + NewPageList.length));
+            }
+            else
+            {
+                $("#pdfinfo").find(">span").html(PageNumber);
+            }
+        }
+        function ShowPdfInfoEx()
+        {
+            console.log("ShowPdfInfoEx:" + PDFCOUNT);
+            if (PDFCOUNT > 0)
+            {
+                $("#pdfinfo").find(">span").html(GetShowNumber(ToPageNumber) + "/" + (PDFCOUNT + NewPageList.length));
+            }
+            else
+            {
+                $("#pdfinfo").find(">span").html(ToPageNumber);
+            }
+        }
+        function GetShowNumber(pageid)
+        {
+            return pageid;
+            var result = 0;
+            for (var id of NewPageList)
+            {
+                if (id <= pageid)
+                {
+                    result++;
+                }
+            }
+            return Math.floor(pageid) + result;
+        }
+        function Record()
+        {
+            CloseToolsEx();
+            //$("#li_record").hide();
+            //$("#li_playrecord").hide();
+            //$("#li_stoprecord").show();
+            IsRecord = true;
+            whiteboard.SetRecord(true);
+        }
+        function RecordHandle(obj)
+        {
+            console.log("Send:"+JSON.stringify(obj));
+            if (ISPC)
+            {
+                //log(JSON.stringify(obj));
+                return;
+            }            
+            try
+            {
+                if (ISANDROID)
+                {
+                    window.AnalyticsWebInterface.reflect(JSON.stringify(obj));
+                }
+                else
+                {
+                    window.webkit.messageHandlers.TestFunction.postMessage(JSON.stringify(obj));
+                }
+            }
+            catch (ex) { }
+        }
+        function VideoTagSelect(id)
+        {
+            LastVideoTagID = id;
+            if (ISPC)
+            {
+                console.log("VideoTagSelect:" + id);
+                return;
+            }
+            try
+            {
+                if (ISANDROID)
+                {
+                    window.AnalyticsWebInterface.videoSelectFunction(id);
+                }
+                else
+                {
+                    window.webkit.messageHandlers.VideoSelectFunction.postMessage(id);
+                }
+            }
+            catch (ex) { }
+        }
+        function VideoTagAfterSelect(info)
+        {
+            //alert("VideoTagAfterSelect:" + JSON.stringify(info));
+            //var id = LastVideoTagID;
+            AfterSelectVideoCall(LastVideoTagID,info);
+        }
+        function VideoTagPlay(id)
+        {
+            if (ISPC)
+            {
+                console.log("VideoTagPlay:" + id);
+                return;
+            }
+            try
+            {
+                if (ISANDROID)
+                {
+                    window.AnalyticsWebInterface.videoPlayFunction(id);
+                }
+                else
+                {
+                    window.webkit.messageHandlers.VideoPlayFunction.postMessage(id);
+                }
+            }
+            catch (ex) { }
+        }       
+        function CallApp(key,data)
+        {
+            console.log("CallApp:Key:" + key + ",Data:" + JSON.stringify(data));
+            if (ISPC)
+            {                
+                return;
+            }
+            try
+            {
+                if (ISANDROID)
+                {
+                    window.AnalyticsWebInterface.callAppFunction(key,JSON.stringify(data));
+                }
+                else
+                {
+                    window.webkit.messageHandlers.CallAppFunction.postMessage({Key:key,Data:data });
+                }
+            }
+            catch (ex) { }
+        }
+        function FromApp(key, data) {
+            console.log("FromApp:Key:" + key);
+            console.log(data);
+            if (key == "ClearBookNote") {
+                whiteboard.ClearBookNote(data.ClearMe, data.ClearOther);
+            }
+            else if (key == "TwinkleBookNote") {
+                whiteboard.TwinkleBookNote(data.LinkID);
+            }
+            else if (key == "OnToolStart") {
+                whiteboard.OnToolStart(data.x, data.y);
+            }
+            else if (key == "OnToolMove") {
+                whiteboard.OnToolMove(data.x, data.y);
+            }
+            else if (key == "OnToolEnd") {
+                whiteboard.OnToolEnd(data.x, data.y);
+            }
+            else if (key == "ShowDotPanData") {
+                var info = ConvertPoints2Line(data.LinesData);
+                whiteboard.ShowDotpenLine(info.lines, info.width, info.height, data.ShowInCenter ? true : false, data.TriggerEvent ? true : false,data.ShowStrokes ? true : false);
+            }
+            else if (key == "PlayDotpenLine") {
+                var info = ConvertPoints2Line(data.LinesData);
+                whiteboard.PlayDotpenLine(info.lines, info.width, info.height);
+            }
+            else if (key == "ChangeMovePageButton") {
+                if (data.Left) {
+                    if (typeof(data.Left.Show)!="undefined") {
+                        if (data.Left.Show) {
+                            $("#moveleft").show();
+                        }
+                        else {
+                            $("#moveleft").hide();
+                        }
+                    }
+                }
+                if (data.Right) {
+                    if (typeof(data.Right.Show)!="undefined") {
+                        if (data.Right.Show) {
+                            $("#moveright").show();
+                        }
+                        else {
+                            $("#moveright").hide();
+                        }
+                    }
+                }
+            }
+            else if (key == "ClearByType") {
+                whiteboard.ClearByType(data.type);
+            }
+        }
+        function ConvertPoints2Line(d)
+        { 
+            if (typeof (d) == "string")
+            {
+                d = JSON.parse(d);
+            }
+            if (d.PaintData)
+            {
+                d = d.PaintData;
+            }
+            if (d.lines)
+            {
+              if (!d.width ||! d.height)
+              {
+                var width = 5600;
+                var height = 7920;
+                var paper = "A4";
+                if (d.address.indexOf("1713.")==0)
+                {
+                  width = 7920;
+                  height = 11200;
+                  paper = "A3";
+                }
+                else if (d.address.indexOf("1536.")==0)
+                {
+                  width = 5600;
+                  height = 7920;
+                  paper = "A4";
+                }
+                d.width = width;
+                d.height = height;
+                d.paper = paper;
+              }
+              return d;
+            }
+            var lines = new Array();
+            var points = new Array();
+            var address = "";
+            for (var p of d)
+            {
+                if (address=="" && p.address)
+                {
+                    address = p.address;
+                }
+                if (p.event_type == 2)
+                {
+                    if (points.length > 0)
+                    {
+                        lines.push({id:GUID(),points:points});
+                        points = [];
+                    }
+                }
+                else
+                {
+                    points.push([p.point_x,p.point_y,p.force,p.timestamp]);
+                }
+            }
+            if (points.length > 0)
+            {
+                lines.push({id:GUID(),points:points});
+                points = [];
+            }
+            var width = 5600;
+            var height = 7920;
+            var paper = "";
+            if (address.indexOf("1713"))
+            {
+                width = 7920;
+                height = 11200;
+                paper = "A3";
+            }
+            else if (address.indexOf("1536"))
+            {
+                width = 7920;
+                height = 11200;
+                paper = "A4";
+            }
+
+            return {"address":address,"lines":lines,"width":width,"height":height,"paper":paper};
+        }
+        function UserSettingChange(opt)
+        {
+            if (ISPC)
+            {
+                console.log("UserSettingChange:" + opt);
+                return;
+            }
+            try
+            {
+                if (ISANDROID)
+                {
+                    window.AnalyticsWebInterface.userSettingChangeFunction(JSON.stringify(opt));
+                }
+                else
+                {
+                    window.webkit.messageHandlers.UserSettingChangeFunction.postMessage(opt);
+                }
+            }
+            catch (ex) { }
+        }
+        function AfterLoadPage()
+        {
+            try
+            {
+                if (ISANDROID)
+                {
+                    window.AnalyticsWebInterface.afterLoadPageFunction();
+                }
+                else
+                {
+                    window.webkit.messageHandlers.AfterLoadPageFunction.postMessage(null);
+                }
+            }
+            catch (ex) { }
+        }
+        function AfterLoadFile()
+        {
+            console.log("AfterLoadFile");
+            try
+            {
+                if (ISANDROID)
+                {
+                    window.AnalyticsWebInterface.afterLoadFileFunction();
+                }
+                else
+                {
+                    window.webkit.messageHandlers.AfterLoadFileFunction.postMessage(null);
+                }
+            }
+            catch (ex) { }
+        }
+        function AfterChangePage(pageid,type)
+        {
+            ShowLog("AfterChangePage:" + pageid);
+            type = type || 0;
+            if (PageNumber != pageid && ToPageNumber != pageid)
+            {
+                return;
+            }           
+            try
+            {
+                if (ISANDROID)
+                {
+                    window.AnalyticsWebInterface.afterChangePageFunction(pageid,type);
+                }
+                else
+                {
+                    window.webkit.messageHandlers.AfterChangePageFunction.postMessage({"pageid":pageid, "type":type });
+                }
+            }
+            catch (ex) { }
+
+        }
+        function NoticeAppError(obj)
+        {
+            try
+            {
+                //obj: {Code:1,Data:d} d: string or json
+                //Code: 1:Not Current Page Data,2:Not Support, 3:Not Current Document Data,100:show image error
+                if (ISANDROID)
+                {
+                    window.AnalyticsWebInterface.showErrorFunction(obj);
+                }
+                else
+                {
+                    window.webkit.messageHandlers.ShowErrorFunction.postMessage(obj);
+                }
+            }
+            catch (ex) { }
+        }
+        function IsCanvasBlank(canvas)
+        {
+            return false;
+            if (!canvas) return true;
+            var blank = document.createElement('canvas');
+            blank.width = canvas.width;
+            blank.height = canvas.height;
+            return canvas.toDataURL() == blank.toDataURL();
+        }
+        function AutoChangeFile(diff)
+        {
+            console.log("AutoChangeFile:"+diff);
+            try
+            {
+                if (ISANDROID)
+                {
+                    window.AnalyticsWebInterface.autoChangeFileFunction(diff);
+                }
+                else
+                {
+                    window.webkit.messageHandlers.AutoChangeFileFunction.postMessage(diff);
+                }
+            }
+            catch (ex) { }
+        }
+        function addBlankPage(pageid)
+        {
+            try
+            {
+                if (ISANDROID)
+                {
+                    window.AnalyticsWebInterface.addBlankPageFunction(pageid);
+                }
+                else
+                {
+                    window.webkit.messageHandlers.AddBlankPageFunction.postMessage(pageid);
+                }
+            }
+            catch (ex) { }
+        }
+        function GetPageInfo(pageno)
+        {
+            return whiteboard.GetPageInfo();
+        }
+        function ShowPageInfo(pageno, oldinfo)
+        {
+            //console.log("ShowPageInfo");
+            for(var info of oldinfo)
+            {
+                whiteboard.Play(info);
+            }
+            IsShowPageInfo = false;
+        }
+        function getContainerWidth()
+        {
+            if (GetPageContainer(PageNumber).length == 0)
+            {
+                return $("#main").width();
+            }
+            else
+            {
+                return GetPageContainer(PageNumber).width();
+            }
+        }
+        function getContainerHeight()
+        {
+            if (GetPageContainer(PageNumber).length == 0)
+            {
+                return $("#main").height();
+            }
+            else
+            {
+                return GetPageContainer(PageNumber).height();
+            }
+        }
+        function getViewWidth()
+        {
+            return document.body.clientWidth;
+        }
+        function getViewHeight()
+        {
+            return document.body.clientHeight;
+        }
+        function _drawGetSvg(pageno)
+        {
+            pageno = pageno || PageNumber;           
+            if (document.getElementById('svg' + pageno))
+            {
+                return document.getElementById('svg' + pageno);
+            }
+            return $('#pageContainer' + pageno).find(">svg")[0];
+        }
+
+        function PlayRecordAction(svg, a,needCheckID)
+        {
+            var check = false;
+            if (needCheckID && needCheckID + "" == "1") {
+                check = true;
+            }
+           whiteboard.Play(a,check);
+        }
+        function GetPageContainer(pageid)
+        {
+            var id = '#pageContainer' + pageid;
+            id = id.replace(".", "\\.");
+            return $(id);
+        }
+        function GetFixedPageNumber(pageid)
+        {
+            return (pageid + "").replace(".", "\\.");
+        }
+        function PrevPage(power)
+        {
+            power = power || false;
+            if (IsToolBarShow == false && power==false) return;
+            //if (LastChangeTime && (new Date() - LastChangeTime) < 300)
+            //{
+            //    return;
+            //}
+            //LastChangeTime = new Date();
+            var pageno=PageNumber-1;
+            if (pageno > 0 && (GetPageContainer(pageno).length == 0 || GetPageContainer(pageno).attr("showerror")!="0")) {
+                whiteboard.PreviewPage(function (issuccess, pagenumber) {
+                    if (!issuccess && pagenumber == -1) {
+                        //change document
+                        //console.log("PreviewPage error");
+                        AutoChangeFile(-1);
+                    }
+                    else {
+
+                    }
+                });
+                PreLoadFile(PDFURL, pageno, function (url,pagenumber)
+                {
+                   whiteboard.ShowPageImage(pagenumber,url);
+                }, false);
+            }
+            else {
+                whiteboard.PreviewPage(function (issuccess, pagenumber) {
+                    if (!issuccess && pagenumber == -1) {
+                        //change document
+                        //console.log("PreviewPage error");
+                        AutoChangeFile(-1);
+                    }
+                    else {
+
+                    }
+                });
+            }
+        }
+        function NextPage(power)
+        {
+            power = power || false;
+            if (IsToolBarShow == false && power==false) return;
+            //if (LastChangeTime && (new Date() - LastChangeTime) < 300)
+            //{
+            //    return;
+            //}
+            //LastChangeTime = new Date();
+            var pageno=PageNumber+1;
+            if (pageno <= PDFCOUNT && (GetPageContainer(pageno).length == 0 || GetPageContainer(pageno).attr("showerror")!="0"))
+            {
+                whiteboard.NextPage(function (issuccess, pagenumber) {
+                    if (!issuccess && pagenumber == -1) {
+                        //change document
+                        //console.log("NextPage error");
+                        AutoChangeFile(1);
+                    }
+                    else {
+
+                    }
+                });
+                PreLoadFile(PDFURL, pageno, function (url, pagenumber) {
+                    //console.log("ShowPageImage:"+url+","+ pagenumber);
+                    whiteboard.ShowPageImage(pagenumber,url);
+                }, false);
+            }
+            else {
+                whiteboard.NextPage(function (issuccess, pagenumber) {
+                    if (!issuccess && pagenumber == -1) {
+                        //change document
+                        //console.log("NextPage error");
+                        AutoChangeFile(1);
+                    }
+                    else {
+
+                    }
+                });
+            }
+        }
+        function ToHand(evt)
+        {
+            ToPointer();
+        }
+        function ToPointer(evt)
+        {
+            //console.log("ToPointer");            
+            CloseToolsEx();
+            ClearTools();
+            ResetTools($("#div_btn_pointer"));
+            UnbindMainTouch();
+            MainTouch();
+        }        
+        function PrestrainPage(pageno)
+        {
+            pageno = Math.floor(pageno);
+            ShowLog("PrestrainPage:" + pageno);
+            if (PDFCOUNT <= 1)
+            {
+                return;
+            }
+            var ToLoadList = new Array();
+            for (var i = pageno - 1; i <= pageno + 1; i++)
+            {
+                if (i > 0 && i!=pageno && i <= PDFCOUNT)
+                {
+                    if (!IsExistInArr(ToLoadList, i))
+                    {
+                        ToLoadList.push(i);
+                    }
+                }
+            }
+            for (var j = 0; j < ToLoadList.length; j++)
+            {
+                if (!ToLoadList[j] || ToLoadList[j] > PDFCOUNT || ToLoadList[j] < 1)
+                {
+                    continue;
+                }
+                if (GetPageContainer(ToLoadList[j]).length == 0)
+                {
+                    //console.log("Pre load:" + ToLoadList[j]);
+                    ShowPDFPage(ToLoadList[j], function () { }, true, false);
+                }
+
+            }
+
+        }
+        function ShowCurrentPage(a,needCheckID) {            
+            if (a.page <= PDFCOUNT && GetPageContainer(a.page).length == 0) {
+                PreLoadFile(PDFURL, a.page, function () {
+                    PlayRecordAction(null, a, needCheckID);
+                }, false);
+            }
+            else {
+                PlayRecordAction(null, a, needCheckID);
+            }
+        }
+        function ShowPDFPage(pageNum, callback, ishide, needScale)
+        {
+            PreLoadFile(PDFURL, pageNum, function ()
+            {
+                whiteboard.PreLoadPage(pageNum, function () {
+                    //ShowLog("PreLoadPage end");
+                });
+            }, ishide);
+        }
+        function PreLoadFile(Url, pageNum, callback, ishide)
+        {
+            //console.log("PreLoadFile:" + pageNum+","+Url.toLowerCase().indexOf("http"));
+            var ispc = location.href.toLowerCase().indexOf("http") == 0;
+            if (ispc || Url.toLowerCase().indexOf("http") == 0)
+            {
+                if (callback) {
+                    callback(Url, pageNum);
+                }
+                return;
+            }
+            SetLoadFileCallBack(Url, pageNum, callback);
+            var showLoading = true;
+            if (typeof (ishide) != "undefined" && ishide == true)
+            {
+                showLoading = false;
+            }
+            try
+            {
+                if (ISANDROID)
+                {
+                    window.AnalyticsWebInterface.preLoadFileFunction(Url, pageNum, showLoading);
+                }
+                else
+                {
+                    window.webkit.messageHandlers.PreLoadFileFunction.postMessage({ "Url": Url, "pageNum": pageNum, "showLoading": showLoading });
+                }
+            }
+            catch (ex) { }
+        }
+        function AfterDownloadFile(Url, pageNum)
+        {
+            ShowLog("AfterDownloadFile:" + pageNum);
+            var callback = GetLoadFileCallBack(Url, pageNum);
+            if (callback) callback(Url, pageNum);
+        }
+        function SetLoadFileCallBack(Url, pageNum, callback)
+        {
+            PDFMAP.set(pageNum + "<>" + Url, callback);
+        }
+        function GetLoadFileCallBack(Url, pageNum)
+        {
+            var callback = PDFMAP.get(pageNum + "<>" + Url);
+            PDFMAP.remove(pageNum + "<>" + Url);
+            return callback;
+        }
+        function ClearPath()
+        {
+            whiteboard.Clear();
+            
+            CloseToolsEx();
+        }
+        function ClearTools()
+        {
+            //$("#main").unbind();
+            //if (DrawTarget != null)
+            //{
+            //    DrawTarget.unbind();
+            //}
+        }
+        function ClearPageAndAction() {
+            $("#main").find(">div.pageContainer[id!='pageContainer" +GetFixedPageNumber(PageNumber) + "']").remove();
+            ClearPath();
+        }
+        function ResetTools(cur)
+        {
+            $("#div_btn_drawline").removeClass("selected");
+            $("#div_btn_drawbrush").removeClass("selected");
+            $("#div_btn_drawrect").removeClass("selected");
+            $("#div_btn_pointer").removeClass("selected");
+            $("#div_btn_drawrectangle").removeClass("selected");
+            $("#div_btn_whiteboard").removeClass("selected");
+            $("#div_btn_text").removeClass("selected");
+            $("#div_btn_video").removeClass("selected");
+            $("#liveActionPen").removeClass("selected");
+            //console.log("ResetTools");
+
+            if (cur)
+            {
+                setTimeout(function () { cur.addClass("selected"); }, 50);
+            }
+        }
+        function ShowMsg(msg)
+        {
+            console.log(msg);
+            //var span = $("#msg").find("span");
+            //$("#msg").show();
+            //var arrtime = span.html().split("<br>");
+            //if (arrtime.length >= 10)
+            //{
+            //    arrtime = arrtime.slice(arrtime.length - 10);
+            //    span.html(arrtime.join("<br>") + "<br>" + msg);
+            //}
+            //else
+            //{
+            //    arrtime.push(msg);
+            //    span.html(span.html() + "<br>" + msg);
+            //}
+            //return;
+            //setTimeout(function ()
+            //{
+            //    //console.log(span.html());
+            //    var arr = span.html().split("<br>");
+            //    if (arr.length == 1)
+            //    {
+            //        span.html("");
+            //        //span.hide();
+            //    }
+            //    else
+            //    {
+            //        arr = arr.slice(1);
+            //        span.html(arr.join("<br>"));
+            //    }
+            //}, 2000 + arrtime.length*100);
+            //if (IsShowLog == true)
+            //{
+            //    $('#msg').stop();
+            //    $("#msg").css({ left: "-500px" }).show();
+            //    $("#msg").find("span").html(msg);
+            //    $('#msg').stop().animate({ left: '15px', opacity: 1 }, 100).delay(1500).animate({ left: '-500px', opacity: 1 }, 10);
+            //}
+        }
+        function ShowLog(log)
+        {
+            //console.log("ShowLog");
+            if (IsShowLog == true)
+            {
+                ShowMsg(log);
+            }
+        }
+        function CloseToolsExetting()
+        {
+            $("#main").css({ "margin-bottom": "0px" });
+            $("#toolssetting").css({ "visibility": "hidden" });
+        }
+        function CloseToolsEx()
+        {
+            //console.log("CloseToolsEx");
+            //$('#maintools').panel('close');
+            $("#div_btn_toobar").animate({right:"0px"},100)
+            $("#maintools").stop().animate({ right: '-46px'}, 100, 'swing', function ()
+            {
+                FLAG=true;
+                $("#maintools").hide();
+                $(".video-choose").hide();
+                $(".addText").hide();
+                $("#penTip").hide();
+                CallApp("OnToolBarVisibleChange",{IsShow:0});
+                //$("#div_btn_toobar").css("opacity", '0').show().animate({ opacity: 1 }, 500);
+            });
+
+        }
+        function AfterLoadPDF(pageNum)
+        {
+            ShowLog("AfterLoadPDF:" + pageNum);
+            IsLoadingPage = false;
+            PageNumber = pageNum;
+            ShowPdfInfo();
+            Record_view();
+            //PrestrainPage(PageNumber);
+            AfterLoadFile();
+            //AfterChangePage(PageNumber);
+            //alert("pdf loaded");
+            //CheckZoom();
+            //setTimeout(CheckZoom, 1000);
+        }
+        function SetShowLog()
+        {
+            IsShowLog = !IsShowLog;
+            if (IsShowLog == true)
+            {
+                setTimeout(function () { $("#div_btn_log").addClass("selected"); }, 500);
+            }
+            else
+            {
+                setTimeout(function () { $("#div_btn_log").removeClass("selected"); }, 500);
+            }
+            //CloseToolsEx();
+        }
+        function CheckZoom() {
+            //console.log("CheckZoom");
+            //whiteboard.RefreshDocument(()=>{
+            //    whiteboard.TriggerViewChange();
+            //});
+            //return;
+            var container = GetPageContainer(PageNumber);
+            var ow = parseInt(container.attr("CW"));
+            var cw = getViewWidth() * CurrentScale;
+            var diff = Math.abs(ow - cw);
+            if (diff < 50) {
+                return;
+            }
+            //ShowLog("CheckZoom");
+            $("#main").css({ "width": getViewWidth(), "height": getViewHeight() });
+
+            if (IsPPT) {
+                ZOOM = document.body.clientWidth / (presSettings.Width + 2);
+                //$("#main").css({ "zoom": ZOOM });
+                $("#main").css({ "transform": "scale(" + ZOOM + ", " + ZOOM + ")" });
+
+            }
+            else {
+                //IsLoadingPage = true;
+
+                var info = GetPageInfo(PageNumber);
+                var newW = getViewWidth() * CurrentScale;
+                $("#pageContainer" + PageNumber).css({ "width": newW }).attr("CW", newW);
+                $("#canvas" + PageNumber).width(newW);
+                $("#pageContainer" + PageNumber).height($("#img_" + PageNumber).height());
+                //$("#main").height($("#img_" + PageNumber).height());
+                whiteboard.ZoomTo(1, function () {
+                    setTimeout(function () {
+                        if (IsShowPageInfo) {
+                            return
+                        }
+                        IsShowPageInfo = true;
+                        $("#svg" + PageNumber).empty();
+
+                        ShowPageInfo(PageNumber, info);
+
+                    }, 300);
+                });
+
+                DrawTarget = null;
+                ToPointer();
+            }
+        }
+        function ResizeDocument() {
+
+        }
+
+        function PlayActionByTxt(txt, needCheckID)
+        {
+            //var actions = ParseAction(txt);
+            //ShowLog(needCheckID + "#" + txt);
+            //if (CurrentAttachmentID != "" && AttachmentID && AttachmentID != "" && AttachmentID + "" != CurrentAttachmentID)
+            //{
+            //    return;
+            //}
+            //AttachmentID = AttachmentID || 0;
+            
+            var a = JSON.parse(txt);
+            if (a.type && a.type == 2)
+            {
+                ShowCurrentPage(a,needCheckID);
+                //PlayRecordAction(null, a,needCheckID);
+                return;
+            }
+            PlayRecordAction(null, a, needCheckID);
+            return;
+
+            var pageid = PageNumber;
+            if (a.page && a.page != 0)
+            {
+                pageid = a.page;
+            }
+
+            var svg = _drawGetSvg(pageid);//$('#pageContainer' + PageNumber).find(">svg");
+            if (!svg)
+            {
+                window.setTimeoutEx(RePlayAction, 1500, a, 1, needCheckID);//teacher change page too faster, student no svg to draw line. so delay draw
+                return;
+            }            
+            PlayRecordAction(svg, a,needCheckID);
+        }
+        function PlayActionByArray(arr, needCheckID)
+        {
+            //ShowLog("beofre PlayActionByArray:" + new Date().toLocaleTimeString());
+            //if (CurrentAttachmentID != "" && AttachmentID && AttachmentID != "" && AttachmentID + "" != CurrentAttachmentID)
+            //{
+            //    return;
+            //}
+            for (var i = 0, j = arr.length; i < j; i++)
+            {
+                var a = JSON.parse(arr[i]);
+                if (a.type && a.type == 2)
+                {
+                    ShowCurrentPage(a,needCheckID);
+                    return;
+                }
+                //PlayRecordAction(null, a, needCheckID);
+                window.setTimeoutEx(PlayRecordAction, (i + 1) * 5, null, a, needCheckID);
+
+                //if (a.type && (a.type == 2 || a.type == 32))
+                //{
+                //    continue;
+                //}
+                //var pageid = PageNumber;
+                //if (a.page && a.page != 0)
+                //{
+                //    pageid = a.page;
+                //}
+                //var svg = _drawGetSvg(pageid);
+                //if (svg)
+                //{
+                //    window.setTimeoutEx(PlayRecordAction, (i + 1) * 20, svg, a,needCheckID);
+                //}
+
+            }
+            //ShowLog("after PlayActionByArray:" + new Date().toLocaleTimeString());
+        }
+        function RePlayAction(a, count,needCheckID)
+        {
+            //if (CurrentAttachmentID != "" && atmid != "" && atmid + "" != CurrentAttachmentID)
+            //{
+            //    return;
+            //}
+            var pageid = PageNumber;
+            if (a.page && a.page != 0)
+            {
+                pageid = a.page;
+            }
+
+            var svg = _drawGetSvg(pageid);
+            if (!svg)
+            {
+                if (count > 3)
+                {
+                    return;
+                }
+                window.setTimeoutEx(RePlayAction, 2000, a, count + 1, needCheckID);
+                return;
+            }
+            else
+            {
+                PlayRecordAction(svg, a,needCheckID);
+            }
+        }
+        function ShowToolbar(isshow)
+        {
+            IsToolBarShow = isshow;
+            if (isshow)
+            {
+                 $("#div_btn_toobar").show();
+                
+            }
+            else
+            {                
+                ToPointer();
+                $("#div_btn_toobar").hide();
+            }
+            $("#liveMouse").hide();            
+            whiteboard.SetCanEdit(isshow);
+        }
+        function ShowToolbarEx(isshow)
+        {
+            IsToolBarShowOnly = isshow;
+            if (isshow)
+            {
+                 $("#div_btn_toobar").show();
+                
+            }
+            else
+            {
+                 $("#div_btn_toobar").hide();
+                //ToPointer();
+                 setTimeout(function () {$("#div_btn_toobar").hide(); },500);
+            }
+        }
+        function GetCurrentPageNumber() {
+            return PageNumber;
+        }
+        function ShowPDF(Url, pageNum, BlankPageNumber,AttachmentID,DisplayInCenter)
+        {
+            DisplayInCenter = DisplayInCenter || false;
+            if (AttachmentID)
+            {
+                if (typeof (AttachmentID) != "number") {
+                    var atmid = parseInt(AttachmentID);
+                    if (isNaN(atmid)) {
+                        CurrentAttachmentID = 0;
+                    }
+                    else {
+                        CurrentAttachmentID = atmid;
+                    }
+                }
+                else {
+                    CurrentAttachmentID = AttachmentID;
+                }
+                
+            }
+            else
+            {
+                CurrentAttachmentID = 0;
+            }
+            ShowLog("ShowPDF:" + Url + "," + pageNum + "," + AttachmentID);
+            PDFURL = Url;
+            PageNumber = pageNum;
+            ToPageNumber = pageNum;
+            ResetTools($("#div_btn_pointer"));
+            whiteboard.ShowDocument($("#main"), Url, pageNum, function(issuccess, pdfcount)  {
+                if (AfterLoadPDF) AfterLoadPDF(pageNum);
+                PDFCOUNT=pdfcount;
+                ShowPdfInfo();
+            },CurrentAttachmentID,DisplayInCenter);
+            return;
+            PDFCOUNT = GetImageCount(Url);
+            PDFURL = Url;
+            PageNumber = pageNum;
+            ToPageNumber = pageNum;
+            IsPPT = false;
+            ShowPDFFile(Url, pageNum, function ()
+            {
+                ShowPdfInfo();
+            });
+        }
+        function SetDoumentUrl(pageNum, url, atmid) {
+            PDFURL = url;
+            whiteboard.SetDoumentUrl(pageNum, url, atmid?atmid:0);
+        }
+        function DisplayInCenter() {
+            whiteboard.DisplayInCenter();
+        }
+        function SetSizeMode(mode) {
+            whiteboard.SetSizeMode(mode);
+            whiteboard.RefreshDocument(function()  {
+                //whiteboard.TriggerViewChange();
+                CurrentScale = 1;
+            });
+        }
+        function SetUserSeting(set) {
+            whiteboard.SetUserSetting(set);
+        }
+        function MovePage(direction) {
+            if (direction == 1) {//up
+                var mh = $("#main").height();
+                var ch = $("#pageContainer" + PageNumber).height();
+                if ($("#main").scrollTop() == 0) {
+                    PrevPage(true);
+                }
+                else if (ch > mh) {
+                    $("#main").scrollTop(Math.max( $("#main").scrollTop()-50,0));
+                }
+            }
+            else if (direction == 2) {//down
+                var mh = $("#main").height();
+                var ch = $("#pageContainer" + PageNumber).height();
+                if ($("#main").scrollTop() == ch - mh) {
+                    NextPage(true);
+                }
+                else if (ch > mh) {
+                    $("#main").scrollTop(Math.min( $("#main").scrollTop()+50,ch-mh));
+                }
+                
+            }
+            else if (direction == 3) {//right
+                NextPage(true);
+            }
+            else if (direction == 4) {//left
+                PrevPage(true);
+            }
+        }
+        function ShowDebugInfo(isshow)
+        {
+            if (isshow)
+            {
+                vConsole.show();
+            }
+            else
+            {
+                vConsole.hide();
+            }
+        }
+        function log(log)
+        {
+            console.log(log);
+        }       
+        function ShowToolBarItem(evt)
+        {
+            //var txt ='{"type":34,"delay":1,"poz":[[255,462],[235,493],[235,506],[60,15],[72,0],[67,57]],"page":0,"VW":1574,"ST":0,"SL":0}'
+            //var txt = '{"type":32,"page":0,"CW":2676,"CH":1505,"VW":1574,"VH":941,"ST":1338,"SL":0}';
+            //PlayActionByTxt(txt);
+            //return;
+            //debugger;
+            //CurrentScale = 1.5;
+            //CheckZoom();
+            //return;
+            //console.log("ShowToolBarItem");
+            //ShowMsg($('#pageContainer' + PageNumber).attr("CW") + "," + $(document.body).width());
+            //$("#maintools").panel("open");
+
+            //PlayActionByTxt('{"type":32,"page":1,"CW":553,"CH":715,"VW":1393,"VH":503,"ST":0,"SL":0}');
+            //setTimeout(function ()
+            //{
+            //    //{"type":32,"page":1,"CW":308,"CH":398,"VW":1393,"VH":503,"ST":0,"SL":0}
+            //    PlayActionByTxt('{"type":32,"page":1,"CW":308,"CH":398,"VW":1393,"VH":503,"ST":0,"SL":0}');
+            //}, 5000);
+            //return
+            if(FLAG){
+                $("#div_btn_toobar").animate({right:"46px"},100)
+                if(evt) _cancelBubble(evt);
+                $("#maintools").stop().show().animate({ right: '0px' }, 100,function(){
+                    FLAG=false;
+                });
+            } else{
+                CloseToolsEx()
+            }
+            CallApp("OnToolBarVisibleChange",{IsShow:1});
+        }
+        function ShowRightToolBar(isshow)
+        {
+            if(isshow)
+            {
+                $("#div_btn_toobar").animate({right:"46px"},100);
+                $("#maintools").stop().show().animate({ right: '0px' }, 100,function(){
+                    FLAG=false;
+                });
+            }
+            else
+            {
+                CloseToolsEx();
+            }
+        }
+        function FullScreen()
+        {
+            //debugger;
+            //PlayActionByTxt('{"type":2,"page":' + (PageNumber+1)+'}')
+            //return;
+            CloseToolsEx();
+            try
+            {
+                if (ISANDROID)
+                {
+                    window.AnalyticsWebInterface.screenFunction();
+                }
+                else
+                {
+                    window.webkit.messageHandlers.ScreenFunction.postMessage(null);
+                }
+
+            }
+            catch (ex) { }
+
+            setTimeout(function () { CheckZoom() }, 500);
+        }
+        function RotateScreen()
+        {
+            CloseToolsEx();
+            try
+            {
+                window.webkit.messageHandlers.RotationFunction.postMessage(null);
+            }
+            catch (ex) { }
+        }
+        function StopRecord()
+        {
+            whiteboard.SetRecord(false);
+            if (IsRecord)
+            {
+                CloseToolsEx();
+                IsRecord = false;
+                //$("#li_record").show();
+                //$("#li_playrecord").show();
+                ShowMsg("Stop Record!");
+            }
+        }
+    </script>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            padding: 0px;
+            margin: 0px;
+            border: 0px;
+            background-color: white;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .bodycontainer {
+            width: 100%;
+            height: 100%;
+            padding: 0px;
+            margin: 0px;
+            border: 0px;
+            background-color: white;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+            .bodycontainer:focus {
+                background-color: white;
+            }
+
+        svg {
+            touch-action: none;
+        }
+
+        html, form {
+            width: 100%;
+            height: 100%;
+        }
+
+        *:focus {
+            outline: none;
+        }
+
+        .btn {
+            padding: 6px 10px;
+            border: 1px solid #d3d3d3;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .pageContainer {
+            border: 0px solid #000;
+            margin: 0px auto;
+            background-color: #FFF;
+            display: inline-block;
+            position:relative;
+        }
+
+        .toolspanel h4 {
+            padding: 0px;
+        }
+
+        .toolssetting {
+        }
+
+            .toolssetting li {
+                float: left;
+                width: 20%;
+            }
+
+        .navigatelist li{
+            min-height: 20px;
+            max-height: 46px;
+        }
+                .navigatelist li div {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+        .editnotemenu {
+        }
+
+            .editnotemenu ul {
+                list-style: none;
+                padding: 0px;
+                margin: 0px;
+                display: inline;
+            }
+
+            .editnotemenu li {
+                float: left;
+                padding: 2px 5px;
+                border-right: 1px solid white;
+            }
+
+                .editnotemenu li:last-child {
+                    border-right: 0px;
+                }
+
+        .resizebg_nw {
+            background: url("img/resizebg.png") bottom right no-repeat;
+        }
+
+        .resizebg_ne {
+            background: url("img/resizebg.png") bottom left no-repeat;
+        }
+
+        .resizebg_sw {
+            background: url("img/resizebg.png") top right no-repeat;
+        }
+
+        .resizebg_se {
+            background: url("img/resizebg.png") top left no-repeat;
+        }
+
+        .ui-icon-pen:after {
+            background-image: url("img/pen_white.svg");
+        }
+
+        .ui-icon-line:after {
+            background-image: url("img/line_white.svg");
+        }
+
+        .ui-icon-next:after {
+            background-image: url("img/next_orange.svg");
+        }
+
+        .ui-icon-paly:after {
+            background-image: url("img/Play_white.svg");
+        }
+
+        .ui-icon-stoprecord:after {
+            background-image: url("img/StopRecord_white.svg");
+        }
+
+        .ui-icon-text:after {
+            background-image: url("img/text_white.svg");
+        }
+
+        .ui-icon-pointer:after {
+            background-image: url("img/pointer_red.svg");
+        }
+
+        .ui-icon-rectangle:after {
+            background-image: url("img/Rectangle_white.svg");
+        }
+
+        .ui-icon-highlighter:after {
+            background-image: url("img/highlighter_white.svg");
+        }
+
+        .ui-icon-done:after {
+            background-image: url("img/done_orange.svg");
+        }
+
+        .ui-icon-clearall:after {
+            background-image: url("img/ClearAllAnnotation_white.svg");
+        }
+
+        .ui-icon-addpage:after {
+            background-image: url("img/action-addpage.svg");
+        }
+
+        .ui-icon-image:after {
+            background-image: url("img/Image_white.svg");
+        }
+
+        .ui-icon-panandzoom:after {
+            background-image: url("img/PanAndZoom_orange.svg");
+        }
+
+        .ui-icon-pause:after {
+            background-image: url("img/pause_white.svg");
+        }
+
+        .ui-icon-return:after {
+            background-image: url("img/return_orange.svg");
+        }
+
+        .ui-icon-moveleft:after {
+            background-image: url("img/left_blue.svg");
+        }
+
+        .ui-icon-moveright:after {
+            background-image: url("img/right_blue.svg");
+        }
+
+        .ui-icon-whiteboard:after {
+            background-image: url("img/Brushmarks_white.svg");
+        }
+
+        .ui-icon-fullscreen:after {
+            background-image: url("img/fullscreen_white.svg");
+        }
+
+        .ui-icon-rotateright:after {
+            background-image: url("img/rotateright_white.svg");
+        }
+
+        .ui-icon-note:after {
+            background-image: url("img/Textmarks_white.svg");
+        }
+
+        .btn-icon-container {
+            height:100%;
+            width: 100%;
+            padding: 0px;
+            border: 0px;
+        }
+
+        .btn-icon-container.selected {
+            color: #4A90E2;
+            background-color: #c5c5c5;
+        }
+        .WBTool_btn {
+            cursor: pointer;
+            margin-left: 15px;
+            width: 40px;
+            height: 40px;
+            padding: 8px 4px 0px 4px;
+            border: 1px solid #fff;
+        }
+        .boardhead
+        {
+            padding-left:80px;
+        }
+
+    </style>
+</head>
+<body onload="BodyOnload();" onresize="BodyChange();" onclick="BodyClick();">
+    <div id="bodycontainer" class="bodycontainer" tabindex="1">
+        <div id="main" style="text-align:center; position: relative;height:100%;width:100%; margin-bottom:0px;transform-origin: top left;  overflow:auto;"></div>
+        <!--div id="maincontainer" style="text-align:center; position:relative; display:inline-block; top:-15px; height:100%;">
+    </!--div-->
+        <div style="z-index:102; position:fixed; top:40px; left:15px; display:none; color:red; font-size:20px;" id="msg">
+            <span></span>
+        </div>
+        <div style="z-index:2; position:fixed; top:5px; left:5px; color:black; font-size:12px;" id="pdfinfo">
+            <span></span>
+        </div>
+        <div style="z-index:2; position:fixed; bottom:40%; left:5px; color:black; font-size:12px;" id="moveleft" onclick="PrevPage(); _cancelBubble(event); return false;" ontouchstart="PrevPage(); _cancelBubble(event); return false;">
+            <div>
+                <img src="img/left_blue.svg" style="width:50px;height:50px;" />
+            </div>
+        </div>
+        <div style="z-index:2; position:fixed; bottom:40%; right:5px; color:black; font-size:12px;" id="moveright" onclick="NextPage();_cancelBubble(event); return false;" ontouchstart="NextPage();_cancelBubble(event); return false;">
+            <div>
+                <img src="img/right_blue.svg" style="width:50px;height:50px;" />
+            </div>
+        </div>
+        <div onclick="ShowToolBarItem(event);return false;" ontouchstart="ShowToolBarItem(event);return false;" style="z-index:99;display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50px 0 0 50px;background-image: linear-gradient(rgb(75,150,249),rgb(147,192,251));position:fixed;right:0;top:5px;box-shadow:0 4px 10px rgba(4, 42, 128, 0.2)   " id="div_btn_toobar">
+            <span class="icon icon-gongju1"  style="color:white;font-size: 20px"></span> 
+        </div>
+        <div style="z-index:2; position:fixed; top:0px; right:70px;display:none;">
+            <div class="ui-input-btn ui-btn ui-icon-fullscreen ui-btn-icon-notext ui-corner-all">
+                <input type="button" data-enhanced="true" value="Enhanced - Icon only" onclick="FullScreen();">
+            </div>
+        </div>
+        <div id="maintools" data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="a" class="toolspanel" style="color:white;background-color:#44444f; border-radius:6px 0 0 6px;z-index:3; width:46px; right:-46px; padding:0px; position:fixed;box-shadow: -3px 0px 10px rgba(218, 216, 216,.3);  top:0px; height:100%; " onclick="">
+           
+            <ul class="navigatelist" style="list-style: none; padding: 6px 0px; margin: 0px; float:left; margin:0px; text-align:center; width:100%;">
+                <li id="li_pointer" class="tool">
+                    <div id="div_btn_pointer" class="btn-icon-container selected" style="text-align:center;">
+                        <!--<input type="button" data-enhanced="true" value="Enhanced - Icon only" onclick="ToPointer();">-->
+                        <span class="icon icon-shubiao" onclick="ToHand(event);"></span>
+                    </div>
+                </li>
+                <li id="li_rotatescreen" style="display:none;" class="tool">
+                    <div id="div_btn_rotatescreen" class="ui-input-btn ui-btn ui-btn-inline ui-icon-rotateright ui-btn-icon-notext ui-corner-all" style="text-align:center;">
+                        <input type="button" data-enhanced="true" value="Enhanced - Icon only" onclick="RotateScreen();">
+                    </div>
+                </li>
+                <li id="li_btn_drawline" class="tool" style="position: relative;">
+                    <div id="liveActionPen" class="btn-icon-container" isdraw="0" style="text-align:center;">
+                        <!--<input type="button" data-enhanced="true" value="Enhanced - Icon only" onclick="DrawLine();">-->
+                        <!--<span class="icon icon-huabi"></span>-->
+                        <span class="icon icon-huabi"></span>
+			            <div id="penTip" style="display:none;position:absolute;right:44px;width:90px;top:50%;transform:translateY(-50%);background-color:#2b3338;padding: 0px 10px;color:white">
+			              <div id="div_btn_drawline" style="float:left;width: 50%;text-align: center;">
+			                <span class="icon icon-huabi" style="font-size:20px;line-height: 40px;"></span>
+			              </div>
+			              <div id="div_btn_drawbrush" style="float:left;width: 50%;text-align: center;">
+			                <span class="icon icon-jihaobi" style="font-size:20px;line-height: 40px;"></span>
+			              </div>
+			            </div>
+                    </div>
+                </li>
+                <li id="li_btn_drawrect" class="tool">
+                    <div id="div_btn_drawrect" class="btn-icon-container" isdraw="0" style="text-align:center;">
+                        <!--<input type="button" data-enhanced="true" value="Enhanced - Icon only" onclick="DrawRect();">-->
+                        <span class="icon icon-zhixian"></span>
+                    </div>
+                </li>
+                <!--<li id="li_btn_drawbrush" class="tool">
+                    <div id="div_btn_drawbrush" class="btn-icon-container" isdraw="0" style="text-align:center;">
+                        <input type="button" data-enhanced="true" value="Enhanced - Icon only" onclick="DrawBrush();">
+                        <span class="icon icon-jihaobi" ></span>
+                    </div>
+                </li>-->
+                <li id="li_btn_text" class="tool">
+                    <div id="div_btn_text" class="btn-icon-container" isdraw="0" style="text-align:center;">
+                        <!--<input type="button" data-enhanced="true" value="Enhanced - Icon only" onclick="DrawText();">-->
+                        <span class="icon icon-wenben"></span>
+                    </div>
+                </li>
+                <li id="li_btn_drawrectangle" style="position: relative" class="tool">
+                    <div id="div_btn_drawrectangle" class="btn-icon-container" isdraw="0" style="text-align:center;">
+                        <!--<input type="button" data-enhanced="true" value="Enhanced - Icon only" onclick="DrawRectangle();">-->
+                        <span class="icon icon-pizhu" ></span>
+                    </div>
+                    <div class="addText" style="display: none; width:114px;background-color:#2f3a44;position:absolute;right:50px;top:50%;transform:translateY(-50%)">
+                        <ul style="padding:14px 8px;margin:0;width:100%">
+                            <li id="stickyNote" style="display:flex;align-items:center;margin:0 auto;">
+                                <span class="icon icon-pizhu" style="margin-right: 10px"></span>
+                                <span style="font-size: 13px">Sticky Note</span>
+                            </li>
+                            <li id="myNote" style="display:flex;align-items:center;margin:10px auto 0;">
+                                <span class="icon icon-Notebook" style="margin-right: 10px;font-size:18px;"></span>
+                                <span style="font-size: 13px">My Note</span>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li id="li_btn_whiteboard" class="tool">
+                    <div id="div_btn_whiteboard" class="btn-icon-container" isdraw="0" style="text-align:center;">
+                        <!--<input type="button" data-enhanced="true" value="Enhanced - Icon only" onclick="DrawWhiteBoard();">-->
+                        <span class="icon icon-baiban" ></span>
+                    </div>
+                </li>
+                <li id="li_btn_video" style="position: relative" class="tool">
+                    <div id="div_btn_video" class="btn-icon-container" isdraw="0" style="text-align:center;">
+                        <span class="icon icon-meiti"></span>
+                    </div>
+                    <div class="video-choose"  style="display: none; box-shadow:-3px 3px 20px rgba(98, 114, 148, 0.14);width:44px;background-color:white;border-radius:6px;position:absolute;right:50px;top:50%;transform: translateY(-50%)">
+                        <ul style="padding:10px 0;margin:0">
+                            <li id="addSync" style="display:flex;align-items:center;justify-content: center;margin:0 auto;width: 30px;height:30px;border-radius:10px;background-color:#3D78FA">
+                                <span class="icon icon-yinxiang1"></span>
+                            </li>
+                            <li id="addLocalVideo" style="display:flex;align-items:center;justify-content: center;margin:7px auto;width: 30px;height:30px;border-radius:10px;background-color:#5553CE">
+                                <span class="icon icon-shipin"></span>
+                            </li>
+                            <li id="addWebVideo" style="display:flex;align-items:center;justify-content: center;margin:0 auto;width: 30px;height:30px;border-radius:10px;background-color:#53CEB6">
+                                <span class="icon icon-shipinlink"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!--<li id="li_btn_addpage">
+                <div id="div_btn_addpage" class="ui-input-btn ui-btn ui-btn-inline ui-icon-addpage ui-btn-icon-notext ui-corner-all" isdraw="0" style="text-align:center;">
+                    <input type="button" data-enhanced="true" value="Enhanced - Icon only" onclick="DrawAddPage();">
+                </div>
+            </li>-->
+
+                <li id="li_btn_undo" class="tool">
+                    <div id="div_btn_undo" class="btn-icon-container" isdraw="0" style="text-align:center;">
+                        <!--<input type="button" data-enhanced="true" value="Enhanced - Icon only" onclick="ClearPath();">-->
+                        <span class="icon icon-chehui" ></span>
+                    </div>
+                </li>
+                <li id="li_btn_redo" class="tool">
+                    <div id="div_btn_redo" class="btn-icon-container" isdraw="0" style="text-align:center;">
+                        <!--<input type="button" data-enhanced="true" value="Enhanced - Icon only" onclick="ClearPath();">-->
+                        <span class="icon icon-huifu" ></span>
+                    </div>
+                </li>
+                <li id="li_btn_log" style="display:none;" class="tool">
+                    <div id="div_btn_log" class="ui-input-btn ui-btn ui-btn-inline ui-icon-info ui-btn-icon-notext ui-corner-all" isdraw="0" style="text-align:center;">
+                        <input type="button" data-enhanced="true" value="Enhanced - Icon only" onclick="SetShowLog();">
+                    </div>
+                </li>
+                <li id="li_btn_clear" class="tool">
+                    <div id="div_btn_clear" class="btn-icon-container" isdraw="0" style="text-align:center;">
+                        <!--<input type="button" data-enhanced="true" value="Enhanced - Icon only" onclick="ClearPath();">-->
+                        <span class="icon icon-shanchu1" ></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <DIV ID="oErrorLog" style="z-index:1000; position:absolute;  top:0px;left:0px; color:red;">
+        </DIV>
+        <textarea id="action" style="display:none;"></textarea>
+        <textarea id="recordactions" style="display:none;"></textarea>
+    </div>
+    <script src="js/vconsole.min.js"></script>
+    <script type="text/javascript">
+        var vConsole = new VConsole();
+        vConsole.setOption('onReady', function ()
+        {
+            vConsole.hideSwitch();
+            //vConsole.show();
+        });
+        
+    </script>
+</body>
+</html>

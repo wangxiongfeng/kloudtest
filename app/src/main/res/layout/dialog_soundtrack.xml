@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible">
+
+            <RelativeLayout
+                android:paddingRight="16dp"
+                android:paddingBottom="12dp"
+                android:paddingLeft="16dp"
+                android:paddingTop="12dp"
+                android:id="@+id/re1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/soundsync"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:id="@+id/close"
+                    android:padding="2dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/close" />
+            </RelativeLayout>
+
+            <View
+                android:layout_below="@id/re1"
+                android:id="@+id/top_divider"
+                android:background="@color/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1.5px" />
+
+            <RelativeLayout
+                android:layout_below="@+id/top_divider"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:visibility="visible"
+                        android:id="@+id/layout_loading"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ProgressBar
+                            android:layout_centerInParent="true"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:indeterminateBehavior="repeat"
+                            android:indeterminateDrawable="@drawable/dialog_loading"
+                            android:indeterminateOnly="true" />
+
+                        <TextView
+                            android:layout_marginLeft="6dp"
+                            android:textSize="14sp"
+                            android:textColor="@color/tab_gray"
+                            android:text="@string/rc_notice_data_is_loading"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/txt_no_data"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="6dp"
+                        android:textSize="14sp"
+                        android:textColor="@color/tab_gray"
+                        android:text="@string/no_soundtrack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+
+                </RelativeLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:visibility="invisible"
+                    android:id="@+id/list_soundtrack"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/createsynctext"
+                    android:gravity="center"
+                    android:layout_width="100dp"
+                    android:layout_height="38dp"
+                    android:background="@drawable/bg_create_sync"
+                    android:layout_weight="1"
+                    android:text="@string/create_new_sync"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_marginLeft="20dp"
+                    android:visibility="gone"
+                    android:layout_weight="1"
+                    android:id="@+id/selectmore"
+                    android:layout_width="100dp"
+                    android:layout_height="38dp"
+                    android:gravity="center"
+                    android:background="@drawable/peertimeselect_bg3"
+                    android:text="@string/select_more_sync"
+                    android:textColor="@color/skyblue"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/ll2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:id="@+id/layout_back"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_alignParentLeft="true">
+
+                <ImageView
+                    android:layout_centerInParent="true"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/arrow_back2" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_toRightOf="@+id/layout_back"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:text="@string/select_more_sync"
+                android:layout_height="42dp" />
+
+            <TextView
+                android:id="@+id/ok"
+                android:layout_marginTop="5dp"
+                android:layout_width="80dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="32dp"
+                android:background="@drawable/bg_create_sync"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:text="@string/base_enter"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+            <View
+                android:id="@+id/view_divider"
+                android:layout_below="@id/layout_back"
+                android:background="@color/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1.5px" />
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_below="@id/view_divider"
+                android:id="@+id/allrecycleview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:visibility="visible"></android.support.v7.widget.RecyclerView>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

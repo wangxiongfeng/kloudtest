@@ -1,0 +1,1145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="app_name">可达测试</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+
+    <string name="ContactMap">ContactMap</string>
+    <string name="delete_friend">删除好友</string>
+    <string name="delete_friend_prompt">将好友删除，同时删除与该好友的聊天记录</string>
+    <string name="data_seeting">资料设置</string>
+    <string name="Albums2">从视频选择</string>
+
+    <string name="dialogue">聊天</string>
+    <string name="service">文档</string>
+    <string name="contact">联系人</string>
+    <string name="contact2">联系人</string>
+    <string name="community">音想房间</string>
+    <string name="personal_center">我</string>
+    <string name="Meeting">会议</string>
+    <string name="Topic">话题</string>
+    <string name="enter">进入</string>
+    <string name="mymeetingid">我的会议室ID:</string>
+
+    <string-array name="tabname">
+        <item>文档</item>
+        <item>聊天</item>
+        <item>会议</item>
+        <item>音想房间</item>
+        <item>我</item>
+    </string-array>
+    <string-array name="tabname_four">
+        <item>文档</item>
+        <item>聊天</item>
+        <item>会议</item>
+        <item>我</item>
+    </string-array>
+    <string-array name="tabname2">
+        <item>文档</item>
+        <item>聊天</item>
+        <item>会议</item>
+        <item>音想房间</item>
+        <item>我</item>
+    </string-array>
+
+    <string name="UserDetail">详情</string>
+    <string name="MemberDetail">老师详情</string>
+
+    <string name="Published_Papers">发布的论文</string>
+    <string name="Success_Case">成功案例</string>
+    <string name="Evaluation">评价</string>
+    <string name="ALLEvaluation">所有评价</string>
+
+    <string name="Map_mode">地图模式</string>
+    <string name="Customer">用户</string>
+    <string name="Health_Consultant">好友</string>
+    <string name="Phone">电话</string>
+    <string name="Main_Phone">主号码</string>
+    <string name="Address">地址</string>
+    <string name="See_Info">查看资料</string>
+    <string name="Fouce_point">关注点：</string>
+    <string name="Descriptions">描述：</string>
+    <string name="Remarks">添加备注</string>
+    <string name="Send_Message">发消息</string>
+    <string name="Telephone">打电话</string>
+
+    <string name="Health_Dashboard">健康仪表盘</string>
+    <string name="Personal_Information">个人资料</string>
+    <string name="Medical_Report">体检报告</string>
+    <string name="Users_Daily">用户日常</string>
+
+    <string name="Healthy_exercise">健康操</string>
+    <string name="All">总计</string>
+
+    <string name="No_Medical_Report">他/她没有任何体检报告</string>
+
+    <string name="Upload_Medical_Report">帮他/她上传</string>
+
+    <string name="Search_Contact">搜索</string>
+    <string name="Cancel">取消</string>
+    <string name="Back">返回</string>
+
+
+    <string name="Reservation_information">预约信息:</string>
+    <string name="Appointment">预约时间</string>
+    <string name="See_Details">查看详情</string>
+
+    <string name="Consulting_Information">咨询信息</string>
+    <string name="Add_Group">添加参与者</string>
+    <string name="Participants">参与者:</string>
+
+    <string name="Common_used">发送文件</string>
+    <string name="Send_knowledge">发送知识</string>
+    <string name="Send_File">分享收藏</string>
+    <string name="New_Service">新建课程</string>
+    <string name="Send_Service">发课程单</string>
+    <string name="Setting">设置</string>
+    <string name="Knowledge_Base">知识库</string>
+
+    <string name="All_large_categories">所有大类</string>
+    <string name="All_small_categories">所有小类</string>
+    <string name="All_concerns">所有关注点</string>
+
+    <string name="Knowledge_Detail">方案详细</string>
+    <string name="Edit_Send">编辑并发送</string>
+    <string name="Send_Link">发送链接</string>
+
+    <string name="please_input_phone_number">请输入手机号</string>
+    <string name="please_input_invite_number">请输入邀请号码</string>
+    <string name="please_input_password">请输入密码</string>
+    <string name="Login">登录</string>
+    <string name="login_failed">登录失败</string>
+    <string name="Input_Telephone">请输入您的手机号码</string>
+    <string name="Input_Password">密码，6--16个字符，字母区分大小写</string>
+
+    <string name="Input_new_Password">请输入新密码</string>
+
+    <string name="Apply_To_Join">申请加入</string>
+    <string name="Forget_Password">忘记密码</string>
+    <string name="Login_Bottom">用户许可协议|隐私条款</string>
+    <string name="user_license_agreement">用户许可协议</string>
+
+    <string name="Reset_Password">修改密码</string>
+    <string name="Send_CheckCode">发送验证码</string>
+    <string name="Resend_CheckCode">重新发送</string>
+    <string name="confirm_reset">确认重置</string>
+
+    <string name="Sign_Up_Close">暂未开发注册请登录我们的网站www.youbao99.com,进入“健康顾问入口”提交资料，我们将第一时间进行资料审核</string>
+
+    <string name="No_Data">没有返回值</string>
+    <string name="No_networking">没有网络，请检查网络连接</string>
+    <string name="NETWORK_ERROR">网络错误</string>
+
+    <string name="Yes">确定</string>
+    <string name="No">取消</string>
+
+    <string name="Forwarding">转发</string>
+    <string name="Sure">确认</string>
+
+
+    <string name="Create_User">创建用户</string>
+    <string name="Care_User">此用户已有私人健康顾问，不允许创建</string>
+    <string name="Cancel_Create">取消创建</string>
+
+    <string name="Exit_group_chat">退出群聊</string>
+    <string name="Disbanded_group">解散群组</string>
+    <string name="unnamed">未命名</string>
+    <string name="Modify_Group_Name">修改群名</string>
+
+    <string name="Write_Phone">手机号码（必填）</string>
+    <string name="Name">姓名（必填）</string>
+    <string name="Write_Local">地区（必填）</string>
+    <string name="Write_Sex">性别</string>
+    <string name="Write_Height">身高</string>
+    <string name="Birthday">生日</string>
+
+    <string name="Gallery">相册</string>
+    <string name="Photo">拍照</string>
+
+    <string name="Chat_Detail">聊天详情</string>
+    <string name="Group_Name">群聊名称</string>
+    <string name="Emptys_Chat">清空聊天记录</string>
+    <string name="Report">举报</string>
+    <string name="group_chat">群聊</string>
+
+
+    <string name="Become_UbaoMan">申请成为康人</string>
+    <string name="Add_Service_Pop">抱歉，只有康人有创建服务单特权。申请成为康人，享受更多权益</string>
+    <string name="Add_Customer_Pop">该用户将会在2周后被分配给其他康人。在2周内成为康人，您就可以拥有该用户了</string>
+    <string name="Become_Success">你现在是康人了</string>
+
+    <string name="Change_Remark_Success">修改备注成功</string>
+    <string name="Country_Code">国家代码</string>
+
+    <string name="Course_invite">正在邀请你加入meeting</string>
+    <string name="Share_invite">分享文件信息</string>
+
+    <string name="Receive_Spectator">You have the ability to grab a man,
+        you have the ability to open the door ah! Do not hide there, I know you are at home.</string>
+    <string name="Receive_Course">天之道，损有余而补不足，是故虚胜实，不足胜有余。其意博，其理奥，其趣深，天地之象分，阴阳之候列，变化之由表，死生之兆彰，不谋而遗迹自同，勿约而幽明斯契，稽其言有微，验之事不忒，诚可谓至道之宗，奉生之始矣。假若天机迅发，妙识玄通，成谋虽属乎生知，标格亦资于治训，未尝有行不由送，出不由产者亦。然刻意研精，探微索隐，或识契真要，则目牛无全，故动则有成，犹鬼神幽赞，而命世奇杰，时时间出焉。</string>
+
+    <string name="Chinese">中文</string>
+    <string name="English">English</string>
+
+    <string name="To_Chat">选择聊天</string>
+    <string name="To_Chat_Top">没有聊天信息</string>
+
+    <string name="language">语言</string>
+    <string name="language2">语言</string>
+    <string name="course">课程</string>
+    <string name="course2">系统课程模板</string>
+    <string name="credit">我的课程</string>
+    <string name="saved">我的收藏</string>
+    <string name="mynote">我的笔记</string>
+
+    <string name="areas">专业领域</string>
+    <string name="about_me">个人简介</string>
+    <string name="valid_membership">会员有效期</string>
+    <string name="change_password">修改密码</string>
+    <string name="login_out">退出登录</string>
+    <string name="sync_tv">同步TV APP</string>
+
+    <string name="course_list">您的课程单</string>
+    <string name="create_group">创建了群聊</string>
+
+    <string name="Modify">修改</string>
+    <string name="Register">注册</string>
+    <string name="Next">下一步</string>
+
+    <string name="Register_success">用户注册成功</string>
+    <string name="nl_No_null">用户名和地址不能为空</string>
+    <string name="Perfact_info">完善资料</string>
+
+    <string name="New_List">新的好友</string>
+
+    <string name="Start_chat">发起对话</string>
+    <string name="Create_Group">创建新群</string>
+    <string name="Add_Friend">添加好友</string>
+
+    <string name="Is_exit">是否退出当前账号</string>
+    <string name="confirm_exit">确认退出</string>
+
+    <string name="notify1">Join With Room ID</string>
+    <string name="notify2">Join With Invite</string>
+
+    <string name="ask_update_out">是否上传到我的收藏</string>
+
+    <string name="ask_delete">是否删除 </string>
+
+    <string name="File">文件</string>
+    <string name="Save_File">保存文件</string>
+    <string name="Save_Success">保存成功</string>
+
+    <string name="Klassroom_ID">会议ID</string>
+    <string name="Schedule">新建</string>
+    <string name="MyKlassroom">开始会议</string>
+    <string name="Input_ID">请输入你的课堂Id</string>
+    <string name="Class_unexist">你加入的课堂不存在</string>
+    <string name="Modify_ID">修改你的课堂Id</string>
+    <string name="classroomid_occupied">classroomId已经被占用</string>
+    <string name="pendingcourse">待课</string>
+
+    <string name="start_peertime">开始</string>
+
+    <string name="update">更新</string>
+    <string name="update_message">检查到新版本，是否更新？</string>
+
+    <string name="Peertime_ID">Peertime ID: </string>
+    <string name="Male">男</string>
+    <string name="Female">女</string>
+    <string name="Purchased_Courses">已购买课程</string>
+    <string name="Gender">性别</string>
+    <string name="Detail_birth">出生日期</string>
+
+
+    <string name="Head">头像</string>
+    <string name="Password">密码</string>
+    <string name="Confirm_password">确认密码</string>
+    <string name="User_ID">User ID</string>
+    <string name="I">我是</string>
+    <string name="password_hint1">请输入密码</string>
+    <string name="password_hint2">请再次输入密码</string>
+    <string name="name_hint">请输入姓名</string>
+    <string name="UserID_hint">请输入ID号</string>
+    <string name="password_warn">两次密码输入必须相同且不能为空</string>
+    <string name="Perfect">完善</string>
+    <string name="Register_Success">注册成功</string>
+    <string name="Name_nn">姓名不能为空</string>
+
+    <string-array name="Role">
+        <item>学生</item>
+        <item>家长</item>
+        <item>老师</item>
+        <item>学校管理者</item>
+    </string-array>
+
+    <string name="Classroom">Classroom-</string>
+
+    <string name="CP_Success">密码修改成功</string>
+    <string name="Finish">完成</string>
+    <string name="et_contact_remark">编辑用户备注</string>
+    <string name="contact_remark">编辑用户备注</string>
+
+    <string name="HasExisted">该手机号已经注册，请直接登录！</string>
+    <string name="UserNotExist">用户不存在</string>
+
+    <string name="Choice">选择</string>
+
+    <string name="weixinChoice">选择文件保存到</string>
+    <string name="weixinmysave">我的收藏</string>
+    <string name="weixinmydocument">文档空间</string>
+
+    <string name="Albums">从文件中选择</string>
+
+    <string name="Uploading">更新中</string>
+
+    <string name="has_account">已有帐号？</string>
+    <string name="login_now">立刻登录</string>
+
+    <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
+    <string name="QR_codescan">二维码扫描</string>
+    <string name="Scan">扫描</string>
+    <string name="Scan_failed">扫描失败</string>
+
+    <string name="Select_school">切换公司</string>
+    <string name="My_School">My School</string>
+
+    <string name="Create_Organization">创建公司/机构</string>
+
+    <string name="Switch_School">选择学校</string>
+    <string name="SS1">你正在把目前的学校改为</string>
+    <string name="SS2">你在这所学校的角色是</string>
+    <string name="Teacher">老师</string>
+
+    <string name="C_School">现在的组织</string>
+    <string name="Switch">切换公司</string>
+
+    <string name="My_contact">我的联系人</string>
+    <string name="School_contact">学校联系人</string>
+
+    <string name="School_name">校名</string>
+    <string name="Teacher_Profile">老师权益</string>
+    <string name="My_account">我的账户</string>
+    <string name="CN_account">创建新公司/机构</string>
+
+    <string name="My_Friends">我的好友</string>
+    <string name="NA_friend">新的朋友</string>
+    <string name="AN_Contact">添加新朋友</string>
+
+    <string name="Edit">编辑</string>
+    <string name="Delete">删除</string>
+    <string name="DeleteFavoritePromet">确认删除选择的文件?</string>
+
+    <string name="Dialog_GunDan">同一时间只能有一端使用聊天功能，您有其他的设备正在使用聊天功能，本设备将暂时退出聊天</string>
+
+    <string name="Upgrade">进化</string>
+
+    <string name="Invite_New">Invite New</string>
+
+    <string name="About">关于</string>
+    <string name="HelpCenter">帮助中心</string>
+    <string name="ShareKS">分享 KloudSync</string>
+
+    <string name="Submit">提交</string>
+
+
+    <string name="Team">当前团队</string>
+    <string name="current_project">当前项目</string>
+    <string name="current_project_folder">当前项目中的文件夹</string>
+    <string name="Current_doc">当前项目的文档</string>
+    <string name="Space">当前团队的空间</string>
+    <string name="Create_Space">新建空间</string>
+    <string name="create_folder">新建文件夹</string>
+    <string name="Current_file">当前团队的文件</string>
+    <string name="Swtich_team">切换团队</string>
+    <string name="Swtich_space">切换空间</string>
+    <string name="Create_team">创建新的团队</string>
+    <string name="create_project">创建新的团队</string>
+    <string name="autosync">自动同步允许将内容显示在您的电视设备上</string>
+    <string name="tvappname">TV APP 名称</string>
+    <string name="tvapplogintime">登录时间</string>
+    <string name="tvapplogin">扫描新电视</string>
+    <string name="opentrans">打开传送声音</string>
+    <string name="closetrans">关闭传送声音</string>
+    <string name="tvlogout">设备登出</string>
+
+    <string name="Select_at">选团队</string>
+    <string name="Select_af">选空间</string>
+
+    <string name="in_hint">邀请电话号码</string>
+    <string name="in_fp_contact">邀请通讯录联系人</string>
+    <string name="member">成员</string>
+
+
+    <!--xfwang-->
+
+    <string name="selecttime">请选择时间</string>
+    <string name="select2">选择</string>
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="day">日</string>
+    <string name="house">时</string>
+    <string name="mintue">分</string>
+
+    <string name="syncroom">音想房间</string>
+    <string name="defaultsyncroom">音想房间</string>
+
+
+    <string name="accept">接受</string>
+    <string name="added">已添加</string>
+    <string name="add">添加</string>
+    <string name="waitVerification">等待验证</string>
+
+    <string name="currentsyncroom">当前团队的音想房间</string>
+
+    <string name="modify_success">个人资料修改成功</string>
+    <string name="province">省</string>
+    <string name="city">市</string>
+    <string name="street">街道</string>
+
+    <string name="to">至</string>
+
+    <string name="default_contact">没有联系人？\n 添加你的好友与学生</string>
+
+    <string name="password_bigthan6">密码需要大于或等于六位数</string>
+    <string name="password_notbe_null">密码不能为空</string>
+    <string name="password_noequal">新密码不一致，请重新输入</string>
+    <string name="now_password">当前密码</string>
+    <string name="input_password">请输入当前密码</string>
+    <string name="new_password">新密码</string>
+    <string name="input_newpassword">请输入新密码</string>
+    <string name="sure_password">确认密码</string>
+    <string name="input_again">请再次输入新密码</string>
+    <string name="OK">完成</string>
+    <string name="companywebsite">网址</string>
+    <string name="loge">图标</string>
+    <string name="coursenotify">通知</string>
+
+    <string name="opencourse">打开课程</string>
+    <string name="viewcourse">查看课程</string>
+    <string name="finishcourse">结束课程</string>
+
+    <!-- 雄风 王 -->
+    <string name="newService">新建课程</string>
+    <string name="inprogress">进行中</string>
+    <string name="Completed">已结束</string>
+    <string name="mycourse">开始上课</string>
+    <string name="join">加入课堂</string>
+    <string name="join2">加入会议</string>
+    <string name="joinroom">输入会议室ID</string>
+    <string name="joinmyclass">加入我的课程</string>
+    <string name="myklassid">我的课程ID:</string>
+    <string name="join3">参加一个会议</string>
+    <string name="otherklassid">连接一个在线会议，输入组织者提供的会议ID</string>
+    <string name="ongoninglesson">正在进行中的课程</string>
+
+    <!--安排会议-->
+    <string name="schStart">开始日期</string>
+    <string name="start_time">开始时间</string>
+    <string name="schName">会议名称</string>
+    <string name="schEnd">结束日期</string>
+    <string name="end_time">结束时间</string>
+    <string name="schDuration">时长</string>
+    <string name="schInvite">邀请参加者</string>
+    <string name="schMeeting">安排会议</string>
+    <string name="schnames">请输入会议名称</string>
+    <string name="schdate">请输入时间</string>
+    <string name="schduration">请选择时长</string>
+    <string name="invite_attendee">邀请参会者</string>
+    <!--进入弹窗-->
+    <string name="satOptions">选择音频工具</string>
+    <string name="satSystem">系统音视频</string>
+    <string name="thirdaudio">第三音视频</string>
+    <string name="thirdaudiopromat">当前选择不支持视频，可使用Skype,WeChat等软件进行语音同步，请前往第三方软件开启语音对话</string>
+    <string name="kCall">Kloud电话</string>
+    <string name="satExternal">外部工具</string>
+    <string name="satOn">启用</string>
+    <string name="satOff">关闭</string>
+    <string name="satOk">确定</string>
+
+    <!--进入页面显示-->
+    <string name="inAttendee">邀请参会者</string>
+    <string name="cbPage">创建空白页</string>
+    <string name="shDocument">上传文档</string>
+    <string name="shYcan">作为主持人，你可以</string>
+    <string name="shAcan">作为参会者，你可以</string>
+    <string name="miProgress">会议正在进行中，</string>
+	<string name="course_in_progress">课程正在进行中，</string>
+    <string name="attendees">参会者</string>
+
+    <!--右上侧按钮-->
+    <string name="mtMore">更多</string>
+    <string name="saTv">同步TV</string>
+    <string name="mtInvite">邀请</string>
+    <string name="mtLeave">离开</string>
+    <string name="mtEnd">结束</string>
+    <!--右下侧按钮-->
+    <string name="mtFile">文件</string>
+    <string name="mtNote">我的笔记</string>
+    <string name="mtAttendee">成员</string>
+    <string name="mtInvite2">邀请</string>
+    <string name="mtChat">聊天</string>
+    <string name="mtWebcam">网络摄像头</string>
+    <string name="mtSync">音想</string>
+    <string name="mtSetting">设置</string>
+
+    <string name="mtPlay">播放</string>
+    <string name="sMeeting">开始会议</string>
+    <string name="sProperty">属性</string>
+    <string name="mtSyncRoom">分享音想房间</string>
+    <string name="mtClose">关闭</string>
+    <string name="mtCallMe">打电话给我</string>
+    <string name="mtStart">开始</string>
+    <string name="mtJoin">加入</string>
+    <string name="mtRefresh">刷新</string>
+    <string name="mtlesson">请等待主持人开始课程</string>
+    <string name="mtNStart">课程未开始</string>
+    <string name="mtDelettLesson">你确认要删除课程吗？</string>
+    <string name="sharemeeting">分享会议</string>
+    <string name="nocontent">没有可用的内容</string>
+    <string name="notvdevices">没有Tv设备</string>
+
+
+    <string name="mtJan">1月</string>
+    <string name="mtFeb">2月</string>
+    <string name="mtMar">3月</string>
+    <string name="mtApr">4月</string>
+    <string name="mtMay">5月</string>
+    <string name="mtJun">6月</string>
+    <string name="mtJul">7月</string>
+    <string name="mtAug">8月</string>
+    <string name="mtSept">9月</string>
+    <string name="mtOct">10月</string>
+    <string name="mtNov">11月</string>
+    <string name="mtDec">12月</string>
+
+
+    <!--meetingmorepopup界面-->
+    <string name="mtView">查看</string>
+    <string name="mtEdit">编辑</string>
+    <string name="mtdelete">删除</string>
+
+
+    <!--yinxiang_create_popup创建创建音想界面-->
+    <string name="mtEBAudio">开启背景音频</string>
+    <string name="mtANAudio">+     添加音频</string>
+    <string name="mtVoice">开启声音</string>
+    <string name="mtAddFile">+ 添加一个声音文件</string>
+    <string name="mtIsound">在这里输入音想名称...</string>
+    <string name="mtYxName">名称</string>
+    <string name="mtRNVoice">录制新的声音</string>
+    <string name="mtHighVoice">高保真</string>
+    <string name="mtSyncRecord">同步</string>
+    <string name="mtCancel">退出</string>
+    <string name="mtRecordSync">录制 &#038; 同步</string>
+    <string name="syncname">音想名称</string>
+    <string name="hidden">隐藏</string>
+    <string name="spanstand">标准</string>
+    <string name="spanhd">高清</string>
+    <string name="spanuhd">超高清</string>
+
+    <string name="createnewaccompany">创建新伴奏/演唱</string>
+    <string name="accompanytitle">标题: </string>
+    <string name="accompanytitlehidden">请输入伴奏音乐/演唱标题</string>
+    <string name="startaccompant">启用伴奏</string>
+    <string name="selectaccompant">+ 选择一个伴奏</string>
+    <string name="startaccompantrecord">录制演唱</string>
+    <string name="startaccompantnewrecord">录制新声音</string>
+    <string name="uploadvoicefile">上传声音文件</string>
+    <string name="selectaccompanyfile">选择伴奏音想文件</string>
+    <string name="accompanysync">伴奏音想</string>
+    <string name="accompanymusic">伴奏音乐</string>
+    <string name="accompanyfilename">文件名</string>
+    <string name="accompanyfiletime">时长</string>
+    <string name="accompanyfilewho">录制人</string>
+    <string name="accompanyfilesize">文件大小</string>
+    <string name="addmeetingmysave">从我的收藏选择</string>
+
+    <string name="makesyncaccompany">制作同步伴奏带</string>
+    <string name="saveaccompany">保存为伴奏</string>
+    <string name="resyncaccompany">重新同步伴奏带</string>
+    <string name="selectcompanimenmusicfile">选择伴奏音乐文件</string>
+    <string name="accompanymusicss">伴奏音乐</string>
+    <string name="accompanysoundss">演唱</string>
+
+
+
+    <!--yinxiangoperatorpopup界面-->
+    <string name="mtShareApp">分享到App</string>
+    <string name="mtShareWechat">分享到微信</string>
+    <string name="mtCopyUrl">复制链接</string>
+
+    <!--moreaction_popup界面-->
+    <!--    <string name="mtShareWechat">分享到微信</string>
+        <string name="mtCopyUrl">复制链接</string>-->
+    <string name="mtMuteAll">全部静音</string>
+    <string name="mtUnmuteAll">取消全部静音</string>
+
+    <!--meeting退出弹窗-->
+    <string name="mtDoSaveMeeting">你想要保存会议数据吗</string>
+    <string name="mtDoLeaveMeeting">你是否想要离开会议</string>
+    <string name="mtSaveExit">保存并离开</string>
+    <string name="mtExit">离开</string>
+
+    <string name="mtDocuments">来自团队文档</string>
+    <string name="mtTPhoto">拍照</string>
+    <string name="mtLibrary">通过资料库导入</string>
+    <string name="mtFileLibrary">通过文件系统导入</string>
+    <string name="mtSavedFiles">我的收藏文档</string>
+
+    <!--个人设置-->
+    <string name="pi_avatar">头像</string>
+    <string name="pi_phone">主号码</string>
+    <string name="pi_sphone">副号码</string>
+    <string name="pi_biography">个人简介</string>
+    <string name="pi_pbiography">请输入您的个人简介</string>
+    <string name="pi_fname">第一姓名</string>
+    <string name="pi_mname">中间名字</string>
+    <string name="pi_lname">最后名字</string>
+    <string name="pi_name">姓名</string>
+    <string name="pi_pfname">请输入第一姓名</string>
+    <string name="pi_pmname">请输入中间名字</string>
+    <string name="pi_plname">请输入最后名字</string>
+    <string name="change_name">设置姓名</string>
+    <string name="change_cancel">取消</string>
+    <string name="change_phone">修改主要号码</string>
+    <string name="change_sphone">修改副号码</string>
+
+
+    <!--我是淫荡分割线-->
+    <string name="message">发消息</string>
+    <string name="modify">修改课程</string>
+    <string name="start">开始上课</string>
+    <string name="publish">发布课程</string>
+    <string name="details">详情</string>
+    <string name="prepareview">查看</string>
+    <string name="student">学生</string>
+    <string name="selectstudent">请先选择学生</string>
+    <string name="selectcoursefirst">请先选择课程</string>
+    <string name="success">成功</string>
+    <string name="laststep">上一步</string>
+    <string name="basicinformation">基础信息</string>
+    <string name="Contactinformation">联系方式</string>
+    <string name="sendcourse">发送课程单</string>
+    <string name="search">搜索: </string>
+    <string name="addteacher">添加老师</string>
+    <string name="addstudent">添加学生</string>
+    <string name="addteacher1">
+请输入手机号来添加联系人
+</string>
+    <string name="addstudent1">
+请输入手机号来添加联系人
+</string>
+    <string name="coursedetails">课程详情</string>
+    <string name="newcontact">新的联系人</string>
+    <string name="searchphone">搜索手机号</string>
+    <string name="inputdocumentname">请输入文档名称</string>
+    <string name="editdocumentname">编辑文件名</string>
+    <string name="selectcourse">选择课程单</string>
+    <string name="searchbyusername">请输入用户名搜索</string>
+
+
+    <string name="allService">所有课程</string>
+    <string name="serviceStatus">服务状态</string>
+    <string name="allType">所有类型</string>
+    <string name="userNamelist">客户名单</string>
+    <string name="reservation">预约人：</string>
+    <string name="reservationAddress">预约地址：</string>
+    <string name="timeOfappointment">预约时间：</string>
+    <string name="promoter">服务发起人</string>
+    <string name="whoServe">为谁服务</string>
+    <string name="descriptionhint">详细描述用户主要症状及希望得到的帮助，这有助于后期的继续观察！（不多于200字）</string>
+    <string name="descriptionhint2">为用户提供详细的解决方案！</string>
+    <string name="communitySearch">搜索你感兴趣的话题</string>
+    <string name="communitycancel">取消</string>
+    <string name="informationPort">信息港</string>
+    <string name="communityActivity">社区活动</string>
+    <string name="onlineInteraction">在线互动</string>
+    <string name="advanced">我要进阶</string>
+    <string name="allmodular">全部模块</string>
+    <string name="back">返回</string>
+    <string name="select_plan">选择方案</string>
+    <string name="select_service">选择服务</string>
+
+    <string name="pullrefresh">释放开始刷新</string>
+    <string name="pull">刷新中...</string>
+    <string name="pullsliding">滑动刷新...</string>
+    <string name="pulldownre">下拉刷新</string>
+    <string name="netclose">网络未连接</string>
+    <string name="normalcourse">标准课程</string>
+    <string name="clear">Clear</string>
+    <string name="right3prompt">通过工具选择会应用所有参与课程或者会议的人员，并需要短暂时间的暂停，用于重新连接</string>
+    <string name="addcontact">添加联系人</string>
+    <string name="addcontactprompt">添加好友后，您需要耐心等待好友接受，才能与好友对话</string>
+    <string name="nitiate_dialogue">该联系人已是你的好友 ，现在您可以发起对话</string>
+    <string name="addapply">您已发送添加好友申请，</string>
+    <string name="accetpit">请耐心等待好友接受！</string>
+    <string name="welcomeklassroom">欢迎来到我的课堂</string>
+    <string name="upcominglesson">即将开始的课程</string>
+    <string name="review">复习课程</string>
+
+    <string name="selectctype">选择课程类型</string>
+    <string name="onetoone">一对一</string>
+    <string name="onetomany">一对多</string>
+    <string name="selectstudents">选择学生</string>
+    <string name="selectcoursee">选择课程</string>
+    <string name="ispublic">公开</string>
+    <string name="uploadaudiosuccess">上传文件成功</string>
+    <string name="uploadfile">上传文件</string>
+    <string name="selectteam">选择团队</string>
+    <string name="selectspace">选择空间</string>
+
+    <string name="upcoming">即将开始</string>
+    <string name="pastdue">已过期</string>
+    <string name="pastfinish">已结束</string>
+
+    <!-- 迪凯 余 -->
+    <string name="myIntegral">我的积分币</string>
+    <string name="enaluation_management_title">评价管理</string>
+    <string name="fauorites_title">我的收藏</string>
+    <string name="integral_title">我的积分</string>
+    <string name="published_article_title">我发布的文章</string>
+    <string name="uualifications_title">资格认证</string>
+    <string name="setting_title">设置</string>
+    <string name="effective_title">会员有效期</string>
+    <string name="about_title">关于康人</string>
+    <string name="agreement_title">康人协议</string>
+    <string name="account_title">账户</string>
+    <string name="pc_pomprt">此功能尚未开发完成，敬请期待！</string>
+    <string name="deviceprompt">同一账号不能同时进入同一房间，\n您有其他的设备进入这个房间，本设备\n将暂时退出房间。</string>
+
+    <string name="pc_sorganization">选择组织</string>
+
+    <!--account setting 界面-->
+    <string name="as_setting">公司/机构设置</string>
+    <string name="as_logo">图标</string>
+    <string name="as_name">名字</string>
+    <string name="as_info_name">姓名</string>
+    <string name="as_address">网址</string>
+    <string name="as_email">邮箱</string>
+    <string name="as_sync">开启音想房间</string>
+    <string name="as_sync_name">SyncRoom自定义名称</string>
+    <string name="as_admin">管理员列表</string>
+    <string name="as_contact_list">联系人列表</string>
+    <string name="as_add_admin">新增管理员</string>
+    <string name="as_save">提交</string>
+    <string name="as_info_save">保存</string>
+
+    <string name="acceptcompanytitle">以下公司邀请您加入</string>
+    <string name="acceptcompanypropet">现在点击加入</string>
+    <string name="acceptcompanyskip">跳过</string>
+    <string name="acceptnextstep">下一步</string>
+    <string name="acceptcompanyinst">不加入其他公司，选择创建自己的组织或参加会议，请单击“下一步。</string>
+    <string name="linkedsetting">TechExcel公司/机构关联设置</string>
+    <string name="supporttype">支持 png ,jpg,maximize 2MB</string>
+    <string name="opencompanycode">启动公司邀请码</string>
+    <string name="companycode">公司邀请码</string>
+
+    <string name="wxf_speakers">发言人</string>
+    <string name="wxf_attendee">参会者</string>
+    <string name="wxf_invite">被邀请者</string>
+    <string name="wxf_team_speaker">临时发言人</string>
+    <string name="wxf_request_speaker">申请发言</string>
+    <string name="wxf_hand_up">已举手</string>
+
+
+
+    <!-- 俊瑞  张 -->
+    <string name="personInfo">资料设置</string>
+    <string name="right">右加号</string>
+    <string name="save">保存</string>
+    <string name="head">头像</string>
+    <string name="phone">手机号</string>
+    <string name="signature">签名</string>
+    <string name="name">姓名</string>
+
+
+    <string name="sex">性别</string>
+    <string name="occupation">职业</string>
+    <string name="professional">专业领域</string>
+    <string name="description">自我描述</string>
+    <string name="paper">论文管理</string>
+    <string name="cases">案例管理</string>
+    <string name="area">地区</string>
+    <string name="birthday">生日</string>
+    <string name="height">身高（cm）</string>
+    <string name="user">手机号</string>
+    <string name="New_chat">新的聊天</string>
+    <string name="edit">编辑</string>
+    <string name="editdescription">您可以帮助用户编辑他/她的个人资料，以便更好管理用户资料</string>
+    <string name="cancel">取消编辑</string>
+    <string name="invite">邀请</string>
+    <string name="nofile">文件不存在</string>
+    <string name="upload">上传</string>
+    <string name="uploadsuccess">上传成功</string>
+    <string name="uploadfailure">上传失败</string>
+    <string name="uploading">正在上传</string>
+    <string name="downfailed">下载头像失败</string>
+    <string name="to_be_allocated">待分配</string>
+    <string name="weight">体重(kg)</string>
+    <string name="deletemeetingok">刪除</string>
+    <string name="deletemeetingcancel">取消</string>
+    <string name="deletemeetingtext">你确认要删除课程吗？</string>
+
+
+    <string name="jiankangcao">健康操</string>
+    <string name="jiankangguwenjianyi">健康顾问建议</string>
+    <string name="jiankangcaojieshao">健康操是根据中医理论为了使人体活血通脉而设计，对于各个年龄段的人都有好处。尤其对于老人比较好，因为老人不像年轻人可以做许多激烈有难度的运动了，选择一些比较柔和的方式比较适宜。</string>
+    <string name="dianjitianjia">尚未连接到设备，请点击此处尝试连接</string>
+    <string name="manpaojieshao">跑步锻炼是人们最常采用的一种身体锻炼方式，这主要是因为跑步技术要求简单，无需特殊的场地、服装或器械。无论在运动场上或在马路上，甚至田野间、树林中均可进行跑步锻炼，适合各种年龄人士。</string>
+    <string name="chiyaotixing">开启"吃药提醒"功能，并设置提醒时间，闹铃就会在相应的时间提醒你准时服药！最多可以设置五个闹铃提醒</string>
+    <string name="zaoshanghewenyanshui">盐能"调和脏腑，消素食、令人健壮"，清晨空腹、小口、喝一小杯(100ml)、温热的淡盐水，有利于降火益肾、保持大便通畅。</string>
+    <string name="health_title">添加与管理</string>
+    <string name="agora_app_id">35e57a3e1425470b9532a66d5dcc10b7</string>
+    <string name="currentpath">Current Path :</string>
+    <string name="addnewdoc">添加新的文档</string>
+    <string name="share">分享</string>
+    <string name="rename">重命名</string>
+    <string name="move">移动</string>
+    <string name="quit_team">退出组</string>
+    <string name="spaces">空间</string>
+    <string name="documents">文档</string>
+    <string name="move_to">移动到</string>
+    <string name="select_space">选择空间</string>
+    <string name="operate_failure">操作失败</string>
+    <string name="operate_success">操作成功</string>
+    <string name="no_data">没有符合条件的数据</string>
+    <string name="select_a_space">选择一个文件夹</string>
+    <string name="from_favorite">从我的收藏</string>
+    <string name="current_space">当前空间</string>
+    <string name="docs_in_spaces">当前空间的文件</string>
+    <string name="syncrooms_in_spaces">当前空间的音想房间</string>
+    <string name="team_memers">团队成员</string>
+    <string name="space_memers">空间成员</string>
+
+    <string name="invite_form_company">从公司中添加</string>
+    <string name="inputphoneorusername">输入电话号码或用户名...</string>
+    <string name="invite_form_admin">邀请新管理员</string>
+    <string name="invite_form_new">邀请新联系人</string>
+    <string name="addmemberfromcomcomtact">从公司联系人和个人联系人中添加成员</string>
+
+    <string name="addteamadmin">增加团队管理员</string>
+    <string name="addspaceadmin">增加空间管理员</string>
+    <string name="addnewmember">邀请新成员</string>
+    <string name="loginprompt">使用手机号或者用户名登录</string>
+
+
+    <string name="Mobile_phone">手机号/用户名</string>、
+    <string name="Mobile_phone2">手机号</string>
+    <string name="Password_hint">请输入密码</string>
+    <string name="Password_con_hint">再次输入密码</string>
+    <string name="register_means_you_agree_to">注册表示您同意\t\t</string>
+    <string name="kloud_sync_terms"> KloudSync的条款</string>
+    <string name="password_rules"> 8-14位密码,必须包含字母,数字,符号中两种</string>
+    <string name="Sign_up">注册</string>
+    <string name="create_account">注册</string>
+    <string name="registration_failed">注册失败</string>
+    <string name="area_code">+86</string>
+    <string name="Name_info">姓名</string>
+    <string name="input_Name_info">请输入登录名</string>
+    <string name="Vertification_Code">验证码</string>
+    <string name="Send_code">发送验证码</string>
+    <string name="reset_pwd">重置密码</string>
+    <string name="please_input_verify_code">请输入验证码</string>
+    <string name="create_and_switch">创建和切换</string>
+    <string name="create_organization">创建公司</string>
+    <string name="input_organization_name">输入组织公司名字</string>
+    <string name="optional">(选填)</string>
+    <string name="input_website">请输入公司网址(选填)</string>
+    <string name="open_company_code">启动公司邀请码</string>
+    <string name="user_company_code">成员可以输入邀请码加入</string>
+    <string name="input_company_code">请输入公司邀请码</string>
+    <string name="name_upper">名称</string>
+    <string name="create_success">创建成功</string>
+    <string name="create_Fail">创建失败</string>
+    <string name="Send">发送</string>
+    <string name="meeting_id">Meeting ID</string>
+    <string name="input_new_meeing_id">输入新的会议ID </string>
+    <string name="input_startkloud_meeing_id">请输入会议ID</string>
+    <string name="input_startkloud_name">请输入姓名</string>
+    <string name="input_startkloud_meeing_id_head">会议ID</string>
+    <string name="input_startkloud_name_head">姓名</string>
+
+    <string name="modify_meeting_id">修改你的会议ID</string>
+    <string name="about">关于</string>
+    <string name="privacy_statement">隐私声明</string>
+    <string name="and">和</string>
+    <string name="useteamandservice">服务协议</string>
+    <string name="create_new_sync">创建音想</string>
+    <string name="select_more_sync">选择音想</string>
+    <string name="sync">同步</string>
+    <string name="soundsync">音想</string>
+    <string name="invite_new">邀请</string>
+    <string name="invite_new_new">邀请</string>
+    <string name="invite_skip">跳过</string>
+    <string name="invite_more">+ 添加更多</string>
+    <string name="request_to_be_my_contact">请求成为我的联系人</string>
+    <string name="Invite_Now">立即邀请</string>
+    <string name="qrcode">二维码</string>
+    <string name="downloading">下载中...</string>
+    <string name="move_sync">移动音想</string>
+    <string name="outline">目录</string>
+
+    <string name="space_filter">筛选空间</string>
+    <string name="show_all_spaces">展示所有空间</string>
+    <string name="show_only_my_spaces">仅展示自己的空间</string>
+
+    <string name="select_a_dir">选择一个文件夹</string>
+
+    <string name="_Albums">相册</string>
+    <string name="_File">文件</string>
+    <string name="_Favorite">收藏</string>
+    <string name="_Camera">相机</string>
+    <string name="save_and_leave">保存并离开</string>
+    <string name="title_to_leave">你确定要离开吗?</string>
+    <string name="presenter">演示人</string>
+
+    <string name="title_to_leave_meeting">你确定要离开会议吗?</string>
+    <string name="title_to_end_meeting">你确定要结束会议吗?</string>
+	<string name="title_to_leave_course">你确定要离开课程吗?</string>
+	<string name="title_to_end_course">你确定要结束课程吗?</string>
+    <string name="save_and_End">保存并结束</string>
+    <string name="End">结束</string>
+    <string name="Me">我</string>
+    <string name="deviceweb">浏览器</string>
+    <string name="deviceandroid">安卓</string>
+    <string name="deviceios">苹果</string>
+    <string name="devicetv">电视</string>
+    <string name="xiatai">下台</string>
+    <string name="Starter">主持人</string>
+
+    <string name="playing">播放中</string>
+    <string name="paused">已暂停</string>
+
+    <string name="my_digital_note">我的电子笔</string>
+    <string name="title_select_digital_pen">选择电子笔</string>
+    <string name="msg_join_as_audience">已经达到了最大数量的会议成员,\n您将作为一个旁听者加入。</string>
+    <string name="title_join_as_audience">旁听者加入</string>
+
+    <string name="tips_orginzaiton_name_not_empty">组织名不能是空</string>
+    <string name="invite_members">邀请成员</string>
+    <string name="invite_now">立即邀请</string>
+    <string name="no_register_prompt">还没有创建账号?</string>
+
+    <string name="welcome_to_kloud">欢迎开到可达</string>
+
+    <!--QWX-->
+    <string name="enable_auto_sync_of_display_for_all_my_devices">启用自动同步显示\n我的所有设备</string>
+    <string name="list_of_devices">设备列表</string>
+    <string name="last_active">最后登录</string>
+    <string name="allow_to_speak">允许发言</string>
+    <string name="close_speech">关闭发言</string>
+    <string name="put_your_hand_down">把手放下</string>
+    <string name="put_your_hand_on">举手发言</string>
+    <string name="become_a_presenter">设为发言人</string>
+    <string name="set_as_host">设为演示人</string>
+    <string name="set_as_participant">设为参会者</string>
+    <string name="set_as_talkable_participant">设为临时发言人</string>
+    <string name="password_reset">密码已重置</string>
+    <string name="base_enter">确定</string>
+    <string name="base_cancel">取消</string>
+    <string name="forget_password_tips_text">8～14位密码，必须包含字母、数字、符号中至少2种</string>
+    <string name="reset_failed">重置失败</string>
+    <string name="passwords_are_inconsistent">密码不一致</string>
+    <string name="reset_login_password">重置登录密码</string>
+    <string name="recover_password">找回密码</string>
+    <string name="mobile_phone_country_code">+86</string>
+    <!--文档-->
+    <string name="please_input_new_folder_name">请输入新建文件夹名称</string>
+    <string name="name_cannot_be_empty">名称不能为空</string>
+    <string name="know_the">知道了</string>
+    <string name="sound_is_still_preparing_and_cannot_do_this">音想还在准备中,不能这样做!</string>
+    <string name="play_soundtrack">播放音想</string>
+	<string name="time">时间</string>
+    <!--聊天-->
+    <!--会议-->
+    <string name="practice_time">课间练习时间</string>
+    <string name="practice_in_class">课间练习</string>
+    <string name="continue_class">继续上课</string>
+    <string name="the_meeting_is_suspended">会议暂停中</string>
+    <string name="meeting_suspended">会议暂停</string>
+    <string name="resume_meeting">继续会议</string>
+    <string name="class_pause_tips">课间练习时间,您可以按老师的要求做练习</string>
+    <string name="meeting_pause_tips">会议暂停中,您可以继续浏览文档或者休息一下</string>
+    <string name="the_content_can_not_be_blank">内容不能为空</string>
+    <string name="no_document">无文档</string>
+    <string name="error_syncing_documents">同步文档出错</string>
+    <string name="delete_document">删除文档</string>
+    <string name="delete_document_tips_text">确定要删除选中的文档吗?</string>
+    <string name="save_to_team_space">保存至团队空间</string>
+	<string name="you_are_not_the_presenter_and_cannot_operate">你不是演示人,不能操作!</string>
+    <string name="creator">创建者</string>
+    <!--音想-->
+    <!--我-->
+    <string name="stay_tuned">敬请期待</string>
+    <string name="enter_pairing">进入配对</string>
+    <string name="current_pen_status">当前笔的状态</string>
+    <string name="similar_pen_source">印象笔记类似笔源</string>
+    <string name="similar_pen_source2">有道云类似笔源</string>
+    <string name="enter_pairing_tips_text">长按电子笔2-3秒</string>
+    <string name="enter_pairing_tips_text2">绿灯长亮，进入配对状态</string>
+    <string name="enter_pairing_tips_text3">提示：橙灯闪烁表示电量不足，需充电</string>
+    <string name="please_make_sure_the_electronic_pen">请确保电子笔：1.电源开启；2.靠近手机；3.未连接其他手机</string>
+    <string name="battery_remaining">电池剩余</string>
+    <string name="storage_remaining">存储剩余</string>
+    <string name="writing_length">书写长度</string>
+    <string name="seeting">设置</string>
+    <string name="penName">笔名 :</string>
+    <string name="firmware_upgrade">固件升级</string>
+    <string name="use_guide">使用指南</string>
+    <string name="switch_the_current_pen_source">切换当前笔源</string>
+    <string name="switch_electronic_pen">切换电子笔</string>
+    <string name="delete_electronic_pen">删除电子笔</string>
+    <string name="add_new_electronic_pen">添加新的电子笔</string>
+    <string name="please_grant_relevant_permissions">请授予相关权限</string>
+    <string name="the_device_does_not_support_Bluetooth">设备不支持蓝牙</string>
+    <string name="device_does_not_support_ble">设备不支持BLE</string>
+    <string name="start_scanning">开始扫描</string>
+    <string name="is_scanning">正在扫描...</string>
+    <string name="the_connected">已连接</string>
+    <string name="not_connected">未连接</string>
+    <string name="scanning">扫描中</string>
+    <string name="go_to_my_notes">前往我的笔记</string>
+    <string name="connected">连接</string>
+    <string name="connecting">连接中...</string>
+    <string name="edit_pen_name">编辑笔名</string>
+    <string name="please_enter_a_pen_name">请输入笔名</string>
+    <string name="setup_failed">设置失败</string>
+    <string name="no_notes_currently">当前无笔记</string>
+	<string name="course_id">课程ID</string>
+	<string name="start_course">开始上课</string>
+
+    <string name="contract_company">联系人 (公司)</string>
+    <string name="contract_all">联系人(所有)</string>
+    <string name="no_contract">还没有添加联系人</string>
+    <string name="show_current_contract">显示当前公司联系人</string>
+    <string name="show_all_contract">显示所有联系人</string>
+    <string name="no_meetings_available">没有可选会议</string>
+    <string name="support_pairing">支持以下笔源配对</string>
+    <string name="impression_electronic_pen">印象电子笔</string>
+    <string name="cloud_electronic_pen">有道云电子笔</string>
+    <string name="add_company_contacts">从公司联系人中添加</string>
+    <string name="add_new_contacts">添加新的联系人</string>
+    <string name="create_new_company_label_info">邀请团队成员一起加入，团队成员身份可以为管理员或普通成员，管理员可以和您一起管理团队和空间</string>
+    <string name="hello_friend_summary">打招呼</string>
+    <string name="meeting_id_change">修改会议ID</string>
+
+    <string name="share_kloudsync">分享KloudSync</string>
+    <string name="copy_link">复制链接</string>
+    <string name="wechat">微信</string>
+    <string name="moment">朋友圈</string>
+    <string name="scan_to_download_app">扫描二维码，下载APP</string>
+    <string name="login_name_tip">手机号登录请输入完整号码：如 +8616267807552</string>
+
+    <string name="join_compnay">加入一个公司</string>
+    <string name="input_invite_code">请输入公司邀请码</string>
+    <string name="_join">参加会议</string>
+    <string name="hint_input_invite_code">请输入公司邀请码</string>
+    <string name="Create">创建</string>
+    <string name="scan_tv">扫描电视设备</string>
+    <string name="_meeting_id">会议ID:</string>
+	<string name="_course_id">课程ID:</string>
+    <string name="kick_off_from_meeting">请他离开会议室</string>
+    <string name="tips">提示</string>
+    <string name="join_start_company">加入机构</string>
+    <string name="new_start_company">创建机构</string>
+
+    <string name="my_contact">我的联系人</string>
+
+    <string name="click_help">点击这里前往帮助中心，查看详细步骤》</string>
+
+    <string-array name="time_duration">
+        <item>15分钟</item>
+        <item>30分钟</item>
+        <item>45分钟</item>
+        <item>60分钟</item>
+        <item>90分钟(1.5小时)</item>
+        <item>120分钟(2小时)</item>
+        <item>180分钟(3小时)</item>
+        <item>240分钟(4小时)</item>
+        <item>300分钟(5小时)</item>
+        <item>360分钟(6小时)</item>
+        <item>420分钟(7小时)</item>
+        <item>480分钟(8小时)</item>
+    </string-array>
+
+    <string name="no_soundtrack">没有音想数据</string>
+    <string name="waiting_meeting_start">等待主持人开启会议</string>
+    <string name="meeting_not_stated">会议还没有开始</string>
+    <string name="meeting">会议</string>
+    <string name="Open">打开</string>
+
+    <string name="phone_needs">手机号需要8到11位</string>
+
+    <string name="host">主持人:</string>
+    <string name="meeting_time">会议时间:</string>
+    <string name="attendee">参会人员:</string>
+    <string name="join_meeting">加入会议</string>
+    <string name="duration_default">45分钟</string>
+    <string name="invite_as_member">邀请为成员</string>
+    <string name="invite_as_admin">邀请为用户</string>
+    <string name="admin">用户</string>
+
+    <string name="prompt">提醒</string>
+    <string name="i_know">知道了</string>
+    <string name="small_size">视频尺寸-S</string>
+    <string name="medium_size">视频尺寸-M</string>
+    <string name="Large_size">视频尺寸-L</string>
+    <string name="video_size">视频尺寸</string>
+    <string name="Show_all_members" >显示所有人</string>
+    <string name="Show_active_speaker">聚焦当前讲话人</string>
+    <string name="Go_video">进入视频会议</string>
+    <string name="Hide_all">隐藏所有人</string>
+
+    <string name="micro">麦克风</string>
+    <string name="video">摄像头</string>
+    <string name="audio">扬声器</string>
+
+    <string name="input_correct_email">请输入正确的邮箱</string>
+
+    <string name="no_interface">无接口</string>
+    <string name="select_date">请选择日期</string>
+    <string name="wechat_not_install">微信客户端未安装，请确认</string>
+    <string name="copy_link_success">复制链接成功！</string>
+    <string name="friend_request_sent">好友请求已发出</string>
+    <string name="share_fail">分享失败</string>
+    <string name="share_success">分享成功</string>
+    <string name="share_cancel">分享被取消</string>
+    <string name="join_health_platform">你的朋友邀请您一起加入优葆健康平台</string>
+    <string name="complete_certification">现在注册并完成认证，可与朋友共同领取积分币奖励！优葆健康期待您的加入，我们共同成长!</string>
+    <string name="invitation">【优葆】来自xxx的邀请</string>
+    <string name="uber_steps">1,请点击此框跳转优葆健康app下载界面。2，登入注册领取优葆积分。</string>
+    <string name="notes_opened_by_schema">由Schema打开的笔记</string>
+    <string name="note_not_exist">笔记在本地设备不存在</string>
+    <string name="camera_not_available">相机不可用</string>
+    <string name="no_operated">不是presenter，不能操作</string>
+    <string name="invitate_succeeded">邀请成功</string>
+    <string name="select_contact">请先选择联系人</string>
+    <string name="join_">加入</string>
+    <string name="guide_title_1_1">心有灵一点通</string>
+    <string name="guide_title_1_2">企业云文档的守护者</string>
+    <string name="guide_title_1_3">互动会议的领航者</string>
+    <string name="guide_title_1_4">“会说话”的云文档</string>
+
+    <string name="guide_title_2_1">让亿万文档开始“说话”思想随行</string>
+    <string name="guide_title_2_2">完整记录企业的数字资产实现价值最大化</string>
+    <string name="guide_title_2_3">营造企业知识传播与服务的新方式</string>
+    <string name="guide_title_2_4">有文档的地方就是一个会议的开始</string>
+
+    <string name="delete_succeeded">删除成功</string>
+    <string name="created_success">创建成功</string>
+    <string name="no_permission_to_delete">你没有权限进行删除操作</string>
+    <string name="no_permission_to_do">没有权限进行此操作</string>
+    <string name="consultation_information">咨询信息</string>
+    <string name="not_exist_kloud">该用户不存在kloud系统中</string>
+    <string name="become_company_contact">点击添加邀请成为公司联系人</string>
+    <string name="to_be_completed">待完成</string>
+    <string name="group_name_cannot_be_empty">群名称不能为空</string>
+    <string name="group_name_modified">修改了群名称</string>
+    <string name="document_team_only">仅文档工作组</string>
+    <string name="both_document_team_and_topic_team">文档组和主题组</string>
+    <string name="no_link_to_document_team">我没有链接到文档组</string>
+</resources>

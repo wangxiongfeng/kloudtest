@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_alignParentRight="true"
+	android:id="@+id/lly_syncroom_ppw_add_doc"
+	android:layout_height="wrap_content"
+	android:background="@drawable/shape_doc_list_upload_ppw_bg"
+	android:orientation="vertical">
+
+	<!--<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:orientation="vertical"
+			android:layout_height="wrap_content">-->
+
+	<LinearLayout
+		android:id="@+id/syncroom_team_document"
+		android:layout_width="match_parent"
+		android:paddingLeft="@dimen/dp_19"
+		android:paddingRight="@dimen/dp_19"
+		android:paddingTop="@dimen/dp_8"
+		android:paddingBottom="@dimen/dp_8"
+		android:layout_height="wrap_content"
+		android:gravity="center_vertical"
+		android:orientation="horizontal">
+
+		<ImageView
+			android:layout_width="@dimen/dp_12"
+			android:layout_height="@dimen/dp_15"
+			android:layout_gravity="center_vertical"
+			android:src="@drawable/icon_file_camera" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:layout_marginLeft="@dimen/dp_11"
+			android:text="@string/mtDocuments"
+			android:textColor="@color/white"
+			android:textSize="@dimen/sp_13" />
+	</LinearLayout>
+
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="0.5dp"
+		android:background="@color/colorDivider242429" />
+
+	<LinearLayout
+		android:id="@+id/syncroom_take_photo"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingLeft="@dimen/dp_19"
+		android:paddingRight="@dimen/dp_19"
+		android:paddingTop="@dimen/dp_8"
+		android:paddingBottom="@dimen/dp_8"
+		android:orientation="horizontal">
+
+		<ImageView
+			android:layout_width="@dimen/dp_12"
+			android:layout_height="@dimen/dp_15"
+			android:layout_gravity="center_vertical"
+			android:src="@drawable/icon_file_camera" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:layout_marginLeft="@dimen/dp_11"
+			android:text="@string/mtTPhoto"
+			android:textColor="@color/white"
+			android:textSize="@dimen/sp_13" />
+
+
+	</LinearLayout>
+
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="0.5dp"
+		android:background="@color/colorDivider242429" />
+
+	<LinearLayout
+		android:id="@+id/syncroom_file_library"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingLeft="@dimen/dp_19"
+		android:paddingRight="@dimen/dp_19"
+		android:paddingTop="@dimen/dp_8"
+		android:paddingBottom="@dimen/dp_8"
+		android:orientation="horizontal">
+
+		<ImageView
+			android:layout_width="@dimen/dp_12"
+			android:layout_height="@dimen/dp_15"
+			android:layout_gravity="center_vertical"
+			android:src="@drawable/icon_file_save" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:layout_marginLeft="@dimen/dp_11"
+			android:text="@string/mtLibrary"
+			android:textColor="@color/white"
+			android:textSize="@dimen/sp_13" />
+
+
+	</LinearLayout>
+
+	<!--<TextView
+		android:layout_width="match_parent"
+		android:layout_height="0.5dp"
+		android:background="@color/colorDivider242429" />
+
+	<LinearLayout
+		android:id="@+id/fileststem_library"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingLeft="@dimen/dp_19"
+		android:paddingRight="@dimen/dp_19"
+		android:paddingTop="@dimen/dp_8"
+		android:paddingBottom="@dimen/dp_8"
+		android:orientation="horizontal">
+
+		<ImageView
+			android:layout_width="@dimen/dp_12"
+			android:layout_height="@dimen/dp_15"
+			android:layout_gravity="center_vertical"
+			android:src="@drawable/icon_file_save" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:layout_marginLeft="@dimen/dp_11"
+			android:text="@string/mtFileLibrary"
+			android:textColor="@color/white"
+			android:textSize="@dimen/sp_13" />
+	</LinearLayout>-->
+
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="0.5dp"
+		android:layout_alignParentBottom="true"
+		android:background="@color/colorDivider242429" />
+
+	<LinearLayout
+		android:id="@+id/syncroom_save_file"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingLeft="@dimen/dp_19"
+		android:paddingRight="@dimen/dp_19"
+		android:paddingTop="@dimen/dp_8"
+		android:paddingBottom="@dimen/dp_8"
+		android:orientation="horizontal">
+
+		<ImageView
+			android:layout_width="@dimen/dp_12"
+			android:layout_height="@dimen/dp_15"
+			android:layout_gravity="center_vertical"
+			android:src="@drawable/icon_file_save" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:layout_marginLeft="@dimen/dp_11"
+			android:text="@string/mtSavedFiles"
+			android:textColor="@color/white"
+			android:textSize="@dimen/sp_13" />
+
+	</LinearLayout>
+
+	<!--<TextView
+		android:layout_width="match_parent"
+		android:layout_height="0.5dp"
+		android:layout_alignParentBottom="true"
+		android:background="@color/colorDivider242429" />
+
+	<LinearLayout
+		android:id="@+id/blank_file"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingLeft="@dimen/dp_19"
+		android:paddingRight="@dimen/dp_19"
+		android:paddingTop="@dimen/dp_8"
+		android:paddingBottom="@dimen/dp_8"
+		android:orientation="horizontal">
+
+		<ImageView
+			android:layout_width="@dimen/dp_12"
+			android:layout_height="@dimen/dp_15"
+			android:layout_centerVertical="true"
+			android:layout_gravity="center_vertical"
+			android:src="@drawable/icon_file_save" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:layout_marginLeft="@dimen/dp_11"
+			android:text="@string/cbPage"
+			android:textColor="@color/white"
+			android:textSize="@dimen/sp_13" />
+
+	</LinearLayout>-->
+
+	<!--</LinearLayout>
+</ScrollView>-->
+</LinearLayout>

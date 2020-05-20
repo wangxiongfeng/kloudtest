@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_follow_speaker"
+    android:layout_width="@dimen/_speaker_normal_width"
+    android:layout_height="@dimen/speaker_normal"
+    android:clickable="true"
+    android:padding="2dp"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:background="@drawable/bg_user_border">
+
+        <FrameLayout
+
+            android:id="@+id/speaker_view_container"
+            android:layout_width="@dimen/_speaker_normal_width"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_user_border"
+            android:padding="4dp"></FrameLayout>
+
+        <LinearLayout
+            android:background="@drawable/bg_user_bottom_info"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_width="@dimen/_speaker_normal_width"
+            android:layout_height="23dp">
+
+            <ImageView
+                android:id="@+id/image_audio_status"
+                android:src="@drawable/microphone"
+                android:layout_width="18dp"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/txt_name"
+                android:ellipsize="end"
+                android:textSize="8dp"
+                android:layout_marginLeft="3dp"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:text=""
+                android:layout_width="38dp"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+
+
+        <com.kloudsync.techexcel5.view.CircleImageView
+            android:id="@+id/member_icon"
+            android:layout_marginBottom="6dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:padding="2dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/img_mode"
+        android:src="@drawable/user_info_expanded"
+        android:layout_centerVertical="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
+
+
+</RelativeLayout>

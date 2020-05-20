@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rly_meeting_pause_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:alpha="0.7"
+    android:background="@drawable/shape_black_all_radius_4"
+    android:paddingBottom="@dimen/dp_5"
+    android:paddingLeft="@dimen/dp_16"
+    android:paddingRight="@dimen/dp_16"
+    android:paddingTop="@dimen/dp_5"
+    android:visibility="gone"
+    tools:showIn="@layout/activity_doc_and_meeting_v2">
+
+    <RelativeLayout
+        android:id="@+id/rly_meeting_pause_big"
+        android:layout_width="@dimen/dp_375"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:id="@+id/rly_pause_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/tv_meeting_pause_title_icon"
+                android:layout_width="@dimen/dp_28"
+                android:layout_height="@dimen/dp_27"
+                android:layout_centerVertical="true"
+                android:src="@drawable/meeting_pause_title_icon" />
+
+            <TextView
+                android:id="@+id/tv_meeting_pause_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_9"
+                android:layout_toRightOf="@+id/tv_meeting_pause_title_icon"
+                android:text="会议暂停标题"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_15" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_meeting_pause_minimize"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/meeting_pause_minimize_icon" />
+
+        <RelativeLayout
+            android:id="@+id/rly_pause_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rly_pause_title"
+            android:layout_marginTop="@dimen/dp_13">
+
+            <TextView
+                android:id="@+id/tv_meeting_pause_tips_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:maxLines="3"
+                android:scrollbars="vertical"
+                android:textColor="@color/colorFonteef2fa"
+                android:textSize="@dimen/sp_12" />
+
+            <RelativeLayout
+                android:id="@+id/rly_meeting_pause_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/et_meeting_pause_tips_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:imeActionLabel="@string/base_enter"
+                    android:maxLines="3"
+                    android:textColor="@color/colorFonteef2fa"
+                    android:textSize="@dimen/sp_12" />
+
+                <TextView
+                    android:id="@+id/tv_edit_pause_tips_ok"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/et_meeting_pause_tips_text"
+                    android:padding="@dimen/dp_5"
+                    android:text="确定"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/sp_12" />
+
+                <TextView
+                    android:id="@+id/tv_edit_pause_tips_cancle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/tv_edit_pause_tips_ok"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:layout_toLeftOf="@id/tv_edit_pause_tips_ok"
+                    android:padding="@dimen/dp_5"
+                    android:text="取消"
+                    android:textColor="@color/colorFont99"
+                    android:textSize="@dimen/sp_12" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rly_pause_tips"
+            android:layout_marginTop="@dimen/dp_22"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_meeting_pause_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/dp_5"
+                android:text="00:00:00"
+                android:textColor="@color/colorFonteef2fa"
+                android:textSize="@dimen/sp_40" />
+
+            <RelativeLayout
+                android:id="@+id/rly_meeting_resume"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_36"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shape_blue_all_radius_19"
+                android:paddingBottom="@dimen/dp_8"
+                android:paddingLeft="@dimen/dp_16"
+                android:paddingRight="@dimen/dp_16"
+                android:paddingTop="@dimen/dp_8">
+
+                <ImageView
+                    android:id="@+id/iv_meeting_resume_icon"
+                    android:layout_width="@dimen/dp_16"
+                    android:layout_height="@dimen/dp_15"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/meeting_pause_btn_resume_icon" />
+
+                <TextView
+                    android:id="@+id/btn_meeting_resume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_toRightOf="@id/iv_meeting_resume_icon"
+                    android:gravity="center"
+                    android:text="继续"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_13" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rly_meeting_pause_minimize"
+        android:layout_width="@dimen/dp_375"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:id="@+id/rly_pause_min_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/tv_meeting_pause_min_time">
+
+            <ImageView
+                android:id="@+id/tv_meeting_pause_min_title_icon"
+                android:layout_width="@dimen/dp_28"
+                android:layout_height="@dimen/dp_27"
+                android:layout_centerVertical="true"
+                android:src="@drawable/meeting_pause_title_icon" />
+
+            <TextView
+                android:id="@+id/tv_meeting_pause_minimize_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_9"
+                android:layout_toRightOf="@+id/tv_meeting_pause_min_title_icon"
+                android:text="最小化会议暂停标题"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_15" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_meeting_pause_min_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/iv_meeting_pause_big"
+            android:text="00:00:00"
+            android:textColor="@color/colorFonteef2fa"
+            android:textSize="@dimen/sp_18" />
+
+        <ImageView
+            android:id="@+id/iv_meeting_pause_big"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:src="@drawable/meeting_pause_big_icon" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="6dp"
+        android:layout_below="@id/rly_meeting_pause_big"
+        android:id="@+id/layout_coach_with"
+        android:layout_width="@dimen/dp_375"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img_coach_icon"
+                android:layout_width="@dimen/dp_28"
+                android:layout_height="@dimen/dp_27"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_private_coach" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_9"
+                android:layout_toRightOf="@id/img_coach_icon"
+                android:text="Private coaching with"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_15" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img_coach_memeber"
+                android:layout_width="@dimen/dp_28"
+                android:layout_height="@dimen/dp_27"
+                android:layout_gravity="center"
+                android:scaleType="center"
+                fresco:fadeDuration="500"
+                fresco:failureImage="@drawable/hello"
+                fresco:failureImageScaleType="centerInside"
+                fresco:placeholderImage="@drawable/hello"
+                fresco:placeholderImageScaleType="fitCenter"
+                fresco:roundAsCircle="true" />
+
+            <TextView
+                android:layout_marginLeft="3dp"
+                android:singleLine="true"
+                android:maxLength="10"
+                android:id="@+id/txt_coach_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="tonyan"
+                android:textColor="@color/colorFonteef2fa"
+                android:textSize="@dimen/sp_15" />
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="12dp"
+        android:layout_below="@id/layout_coach_with"
+        android:id="@+id/layout_coach_audiences"
+        android:layout_width="@dimen/dp_375"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+        <TextView
+            android:paddingLeft="3dp"
+            android:id="@+id/txt_coach_audiences"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/prompt_joined_private_channel"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15" />
+
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
